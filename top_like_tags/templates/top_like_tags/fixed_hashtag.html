@@ -1,0 +1,88 @@
+{% extends 'top_like_tags/base.html' %}
+{% block base %}
+    {% load static %}
+    <style>
+    .main_part, .overlay{
+        display: none;
+    }
+    </style>
+    <br><Br><br>
+            <div class="container mx-auto text-center">
+                <h1>#TopLikeTags</h1>
+                <br>
+                <h6>Want to tag your pictures quickly?   Likes?   Followers?</h6><br>
+                <h5>Copy and paste a group of tags below into your picture!</h5>
+                <p style="color: grey; font-weight: 900;">INSTAGRAM ALLOWS MAX 30 TAGS PER PHOTO.<br>
+                ONLY PASTE ONE OF THE BLOCKS BELOW IN YOUR PHOTO AND DELETE ALL OTHER TAGS.</p><br>
+                <div class="text-left mx-auto col-md-8">
+                    <b>Most Popular</b>
+                    <textarea rows="4" class="form-control">#love #TagsForLikes #TagsForLikesApp #TFLers #tweegram #photooftheday #20likes #amazing #smile #follow4follow #like4like #look #instalike #igers #picoftheday #food #instadaily #instafollow #followme #girl #iphoneonly #instagood #bestoftheday #instacool #instago #all_shots #follow #webstagram #colorful #style #swag
+                    </textarea>
+                </div><bR><Br>
+                <div class="col-md-5 mx-auto text-center" style="z-index: 4;">
+                    <h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>
+                </div>
+                <br><Br>
+
+    {% if fixed_hash %}
+        {% for hashtag in fixed_hash %}
+                <div onclick="open_div(this);" class="main_div text-left col-md-8 mx-auto">
+                    <div style="cursor: pointer;" class="row">
+                        <div class="col-md-11">
+                            <h3>{{ hashtag.title }}</h3>
+                        </div>
+                        <div class="col-md-1">
+                            <i style="font-size: 1.6rem;" class="fa fa-chevron-down"></i>
+                            <i style="display: none; font-size: 1.6rem;" class="fa fa-chevron-up"></i>
+                        </div>
+                    </div>
+                    <div class="hashtags_div mx-auto text-center">
+                        <textarea style="display: none; font-size: 0.9rem;" rows="5" id="bar" class="form-control">{{ hashtag.hashtags }}</textarea><br>
+                        <button data-clipboard-target="#bar" onclick="alert('Copied To Clipboard !');" style="display: none; background: transparent; color: black;" class="btn btn-primary text-center mx-auto">Copy</button>
+                    </div>
+                    <script>
+                        function open_div(ele) {
+                            $('.main_div').attr('onclick', 'close_div(this);')
+                            $(ele).find("i.fa-chevron-down").hide('slow');
+                            $(ele).find("i.fa-chevron-up").show('slow');
+                            $(ele).find("textarea").show('slow');
+                            $(ele).find("button").show('slow');
+                        }
+                        function close_div(ele) {
+                            $('.main_div').attr('onclick', 'open_div(this);')
+                            $(ele).find("i.fa-chevron-up").hide('slow');
+                            $(ele).find("i.fa-chevron-down").show('slow');
+                            $(ele).find("textarea").hide('slow');
+                            $(ele).find("button").hide('slow');
+                        }
+                    </script>
+                </div>
+        {% endfor %}
+    {% endif %}
+            </div>
+    <br><Br><br>
+    <div class="col-md-10 mx-auto text-center" style="z-index: 4;">
+        <h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>
+    </div>
+    <hr>
+    <div class="social_icons">
+
+    </div>
+    <!--Footer-->
+    <div class="col-md-12">
+        <div class="container" style="padding: 10px;">
+            <hr>
+            <div class="row">
+                <div class="mr-auto text-left">
+                    <p style="font-size: 0.8rem;">Copyright: 2020 by topliketags.com | Imprint | Privacy | Links</p>
+                </div>
+                <div class="ml-auto text-right">
+                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-instagram"></i>
+                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-facebook"></i>
+                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-twitter"></i>
+                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-google-plus"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

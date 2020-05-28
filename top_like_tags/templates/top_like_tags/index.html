@@ -1,0 +1,210 @@
+{% extends 'top_like_tags/base.html' %}
+{% block base %}
+    {% load static %}
+    <style>
+        .form-control{
+            background: transparent;
+            color: black;
+            border: 2px solid #17d9db;
+            height: 50px;
+            padding: 20px;
+            border-radius: 50px;
+        }
+        .form-control::placeholder{
+            color: white;
+        }
+    .btn, .btn:hover{
+        border-radius: 50px;
+        border: 2px solid #17d9db;
+        background: transparent;
+        color: #17d9db;
+    }
+    .fas{
+        color: #f9333f;
+    }
+    </style>
+    <div class="col-md-12">
+        <!--TopPart-->
+        <div class="container mx-auto text-center" style="color: white; z-index: 4; padding: 20px;"><br>
+            <!--<div class="col-md-8 mx-auto text-center" style="z-index: 4;">
+                <h1 style="border-radius: 10px; padding: 20px; border: 2px solid white;">Space for ads...</h1>
+            </div>-->
+            <div class="col-md-6 mx-auto text-center" style="margin: 200px 0px 0px 0px; z-index: 4;">
+                <h5 style="">GENERATE EASY & FAST THE BEST HASHTAGS FOR
+                    - INSERT A WORD TO GENERATE</h5>
+            </div>
+        </div>
+        <!--WorkingPart-->
+        <div class="container mx-auto text-center" style="color: white;">
+            <div class="col-md-5 text-center mx-auto" style="z-index: 4;">
+                <form method="post" class="main_form mx-auto text-center">{% csrf_token %}
+                    <div class="form-group">
+                        <label for="keyword_field"></label>
+                        <input type="text" required placeholder="Enter The Keyword For The Hashtag..." id="keyword_field"
+                        class="form-control"/>
+                    </div><br>
+                    <div class="error_txt"></div>
+                    <div class="row mx-auto text-center">
+                        <div class="form-check mx-auto text-center">
+                            <label class="form-check-label" for="random"><input onclick="check_it(this.id);" type="checkbox" id="random" class="form-check-input"/>
+                            Random</label>
+                         </div>&nbsp;&nbsp;
+                        <div class="form-check mx-auto text-center">
+                            <label class="form-check-label" for="top"><input onclick="check_it(this.id);" type="checkbox" id="top" class="form-check-input"/>
+                            Top</label>
+                         </div>
+                    </div><br>
+                    <button class="btn btn-primary text-center">Generate Hashtag</button>
+                </form>
+            </div>
+        </div><br><br>
+        <div class="col-md-6 mx-auto text-left hash" style="z-index: 4; padding: 100px 20px 20px 20px; display: none;">
+            <div style="color: black;">
+                <textarea rows="6" style="border-radius: 10px;" id="bar" class="hashtags form-control"></textarea>
+            </div><br>
+            <div class="mx-auto text-center">
+                <button data-clipboard-target="#bar" style="background: transparent; color: black;" class="btn btn-primary">Copy</button>
+            </div>
+        </div><br><br><br>
+        <div class="container mx-auto text-center" style="z-index: 4;">
+            <h1 style="border-radius: 10px; padding: 20px; border: 2px solid black; color: black;">Space for ads...</h1>
+        </div><br><br><Br><Br>
+        <!--Blogs-->
+        <div class="container mx-auto text-center">
+            <div class="row mx-auto text-center">
+                {% if blog %}
+                    {% for b in blog %}
+                        <div class="card mx-auto text-center" style="width: 18rem;  margin: 5px;">
+                          <img class="card-img-top" src="{{ b.blogimg.url }}" style="width: auto; height: 230px;" alt="Card image cap">
+                          <div class="card-body text-left">
+                            <h5 class="card-title">{{ b.title|truncatechars:60 }}</h5>
+                            <p class="card-text">{{ b.text|truncatechars:50 }}</p>
+                            <a href="{% url 'top_like_tags:full_blog' blog_id=b.b_url %}" class="btn btn-primary">Read More</a>
+                          </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div><Br><Br><Br>
+        <!--First Text Part-->
+        <div class="col-md-8 mx-auto text-center" style="z-index: 4;">
+            <h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>
+        </div><br><br><br>
+
+        <!--Why all hashtag-->
+        <div class="container">
+            <div class="col-md-6 mx-auto text-center">
+                <br>
+                <h3 style="font-weight: 900;">WHY ALL HASHTAG?</h3>
+                <hr class="col-md-1" style="background: #f9333f;">
+                <p>It's easy to use, fast and for free.</p><br>
+            </div>
+            <div class="row">
+                <div class="col-md-4" style="padding: 10px;">
+                    <div class="row">
+                        <div class="col-md-3" style="padding: 20px 20px 20px 20px;">
+                            <i style="font-size: 2.5rem;" class="fas fa-users"></i>
+                        </div>
+                        <div class="col-md-9">
+                            <h6>More Followers</h6>
+                            <p>Get more followers and fans on
+                                instagram,  twitter,  facebook and other social media platforms.</p>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-3" style="padding: 20px 20px 20px 20px;">
+                            <i style="font-size: 2.5rem;" class="fas fa-gift"></i>
+                        </div>
+                        <div class="col-md-9">
+                            <h6>Free to use</h6>
+                            <p>One of the benefit of this website is that all services and hashtag tools are 100% for free.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="padding: 10px;">
+                    <div class="row">
+                        <div class="col-md-3" style="padding: 20px 20px 20px 20px;">
+                            <i style="font-size: 2.5rem;" class="fas fa-thumbs-up"></i>
+                        </div>
+                        <div class="col-md-9">
+                            <h6>More likes</h6>
+                            <p>Push your contents, photos and videos with the hashtag tools to get more likes.</p>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-3" style="padding: 20px 20px 20px 20px;">
+                            <i style="font-size: 2.5rem;" class="fas fa-life-ring"></i>
+                        </div>
+                        <div class="col-md-9">
+                            <h6>Support</h6>
+                            <p>If you have any questions or suggestions about my work or about my person, feel free to contact me.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="padding: 10px;">
+                    <div class="row">
+                        <div class="col-md-3" style="padding: 20px 20px 20px 20px;">
+                            <i style="font-size: 2.5rem;" class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="col-md-9">
+                            <h6>More Success</h6>
+                            <p>Amplify your products, posts and brands with the best hashtags to become more successful.</p>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-3" style="padding: 20px 20px 20px 20px;">
+                            <i style="font-size: 2.5rem;" class="fas fa-heart"></i>
+                        </div>
+                        <div class="col-md-9">
+                            <h6>Mae with love</h6>
+                            <p>All hashtag tools are made with a lot of care and coffee  to give you the best results that you need.</p>
+                        </div>
+                    </div>
+                </div>
+            </div><br><br><br>
+        </div>
+        <div class="col-md-8 mx-auto text-center" style="z-index: 4;">
+            <h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>
+        </div><br><br><br>
+    </div><br>
+    <div class="container">
+            <div class="row">
+                <div class="col-md-6" style="padding: 20px;">
+                    <h4 style="font-weight: 900;">IT'S ALL ABOUT HASHTAGS</h4>
+                    <hr style="background-color: #f9333f;">
+                    <p style="color: #535353;">Nowadays hashtags are everywhere. You see them on Instagram, Twitter, Pinterest, Google+ and Facebook. Hashtags can expand your content reach, amplify your brand and products, get your content found, improve your SEO ranking and even more.</p><br>
+                    <p style="color: #535353;">All Hashtag is a website, that will help you to create and analyse fast and easy top relevant hashtags for your social media content and marketing. You can generate thousands of relevant hashtags that you simply copy and paste into your social media posts.</p>
+                </div>
+                <div class="col-md-6 mx-auto text-center" style="padding: 20px;">
+                    <div class="insta-img mx-auto text-center" style="width: 200px; margin: 0px 0px 50px 0px">
+                        <img style="max-width: 100%; height: auto; display: block;" src="{% static 'logo1.png' %}">
+                    </div>
+                    <h4 style="font-weight: 900;">HASHTAGS FOR INSTAGRAM</h4>
+                    <hr style="background-color: #f9333f; width: 20%;">
+                    <p style="color: #535353; padding: 0px 20px 0px 20px;">You want more followers and more likes for your Instagram?
+                    Generate 30 hashtags for one post with the <span style="color: #f9333f;">hashtag generator.</span></p>
+                </div>
+            </div>
+        </div><Br><br><br>
+    <!--Footer-->
+    <div class="col-md-12">
+        <div class="container" style="padding: 10px;">
+            <hr>
+            <div class="row">
+                <div class="mr-auto text-left">
+                    <p style="font-size: 0.8rem;">Copyright: 2020 by topliketags.com | Imprint | Privacy | Links</p>
+                </div>
+                <div class="ml-auto text-right">
+                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-instagram"></i>
+                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-facebook"></i>
+                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-twitter"></i>
+                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-google-plus"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+
+
+</script>
+{% endblock %}

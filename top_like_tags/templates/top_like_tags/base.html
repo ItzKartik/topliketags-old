@@ -1,0 +1,209 @@
+{% load static %}
+<html lang="en">
+<head>
+    <title>Top Like Tags - Instagram Hashtag Generator</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Instagram Hashtag Generator In A New Way.">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="John Doe">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'favicon.jpg' %}">
+    <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'flaticon/font/flaticon.css' %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'animate.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open Sans|Playfair Display|Work Sans|Cormorant Garamond|Lora|Lobster|Josefin Sans|Roboto|Dancing Script|Abril Fatface|&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            font-family: 'Josefin Sans';
+        }
+        @media(max-width: 1100px){
+
+        }
+        @media(max-width: 770px){
+            .navbar-img{
+                text-align: center !important;
+            }
+            .navbar-toggler{
+                position: absolute;
+            }
+            .navbar-collapse{
+                text-align: right;
+            }
+            .navbar{
+                height: auto !important;
+            }
+        }
+        a{
+            text-decoration: none;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        .nav_id{
+            font-weight: 700;
+            font-size: 1rem;
+            {#color: #4b4b4b;#}
+            color: white;
+        }
+        .nav_id:hover{
+            text-decoration: none !important;
+            transition: ease 0.5s;
+            color: #00e1ff !important;
+        }
+        div.main_part{
+            z-index: 2;
+            width: 100%;
+            height: 750px;
+            position: absolute;
+            box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+            background: url("{% static 'bg.jpg' %}");
+            background-position: center;
+            background-size: cover;
+            opacity: 0.8;
+            background-repeat: no-repeat;
+        }
+         div.overlay{
+            z-index: 3;
+            width: 100%;
+            height: 750px;
+            position: absolute;
+            box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+            border-radius: 5px;
+            {#background-color: rgba(255, 255, 255, 0.15);#}
+            background-color: rgba(0, 0, 0, 0.57);
+            backdrop-filter: blur(3px);
+            color: #fff;
+        }
+        .nv{
+            background: rgba(0, 0, 0, 0.23);
+            {#background: rgba(255, 255, 255, 0.62);#}
+            z-index: 4;
+            color: white;
+        }
+        .nav-link{
+            color: black !important;
+        }
+        .nav-link:hover{
+            transition: ease 0.5s;
+            color: #00e1ff !important;
+        }
+        .navbar-toggler{
+            border: none !important;
+        }
+    </style>
+</head>
+<body>
+<div class="overlay"></div>
+<div class="main_part"></div>
+{#<div class="col-md-12 nv">#}
+{#    <div class="mx-auto text-center" style="width: 200px; padding: 20px;">#}
+{#        <img style="max-width: 100%; height: auto; display: block;" src="{% static 'logo1.png' %}">#}
+{#    </div><br>#}
+{#    <div class="col-md-6 mx-auto text-centr">#}
+{#        <div class="row mx-auto text-center">#}
+{#            <div class="nav_ids col">#}
+{#                <a class="nav_id home" href="">HOME <span class="sr-only">(current)</span></a>#}
+{#            </div>#}
+{#            <div class="nav_ids col">#}
+{#                <a class="nav_id about_us" href="">ABOUT</a>#}
+{#            </div>#}
+{#            <div class="nav_ids col">#}
+{#                <a class="nav_id forums" href="">FORUMS</a>#}
+{#            </div>#}
+{#            <div class="nav_ids col">#}
+{#                <a class="nav_id contact_us" href="">CONTACT</a>#}
+{#            </div>#}
+{#        </div><br>#}
+{#    </div>#}
+{#</div>#}
+
+<nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light" style="
+border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: none; z-index: 4; background: white !important;">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button><br>
+        <div class="navbar-img mx-auto text-center" style="width: 200px; padding: 20px;"><img style="display: block; max-width: 100%; height: auto;" src="{% static 'logo1.png' %}"></div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'top_like_tags:index' %}">HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'top_like_tags:about' %}">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'top_like_tags:forums' %}">FORUMS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'top_like_tags:fixed_hashtag' %}">POPULAR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'top_like_tags:contact' %}">CONTACT</a>
+                </li>
+            </ul><br>
+        </div>
+    </div>
+</nav>
+{% block base %}
+{% endblock %}
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    AOS.init();
+    $('.main_form').submit(function (e) {
+    e.preventDefault();
+    if ($('.form-check-input').is(':checked')){
+        $('.error_txt').html('');
+        $.ajax({
+            url: "{% url 'top_like_tags:generator' %}",
+            type: 'POST',
+            data: {
+                keyword: $('#keyword_field').val(),
+                random: $('#random').val(),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function (data) {
+                $('.main_form')[0].reset();
+                $('.hashtags').html('');
+                $('.hash').show();
+                var d = JSON.parse(data);
+                if ($('#random').val() == 1) {
+                    for (var i = 0; i < d.length; i) {
+                        var r = Math.floor(Math.random() * d.length);
+                        $('.hashtags').append('#' + d[r] + ' ').fadeIn("slow");
+                        d.splice(r, 1);
+                    }
+                }
+                else{
+                    for (i=0; i < d.length; i++){
+                        $('.hashtags').append('#'+d[i]+' ').fadeIn("slow");
+                    }
+                }
+                var clipboard = new ClipboardJS('.btn');
+                window.scrollTo(0,500);
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
+    }else{
+        $('.error_txt').append('<p class="mx-auto text-center" style="color: #f9333f;">Please Select One CheckBox To Start</p>');
+    }
+});
+function check_it(ele){
+    $('.form-check-input').prop('checked', false);
+    $('.form-check-input').val(0);
+    var e = '#'+ele;
+    $(e).val(1);
+    $(e).prop('checked', true);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'top_like_tags/base.html' %}
+{% block base %}
+{% load static %}
+<style>
+.main_part, .overlay{
+    display: none;
+}
+
+</style>
+<Br><Br><br>
+    <div class="container mx-auto text-center">
+        <div style="z-index: 4;">
+            <h1 style="color: white;">Forums</h1>
+        </div>
+    </div>
+    <div class="container mx-auto text-center">
+        <div class="row mx-auto text-center">
+            {% if blog %}
+                {% for b in blog %}
+                    <div class="card mx-auto text-center" style="width: 18rem;  margin: 5px;">
+                      <img class="card-img-top" src="{{ b.blogimg.url }}" style="width: auto; height: 230px;" alt="Card image cap">
+                      <div class="card-body text-left">
+                        <h5 class="card-title">{{ b.title|truncatechars:60 }}</h5>
+                        <p class="card-text">{{ b.text|truncatechars:70 }}</p>
+                        <a href="{% url 'top_like_tags:full_blog' blog_id=b.title %}" class="btn btn-primary">Read More</a>
+                      </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+<br><br><br><br>
+<div class="container mx-auto text-center" style="z-index: 4;">
+    <h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>
+</div><br><br><br>
+<div class="col-md-12">
+    <div class="container" style="padding: 10px;">
+        <hr>
+        <div class="row">
+            <div class="mr-auto text-left">
+                <p style="font-size: 0.8rem;">Copyright: 2020 by topliketags.com | Imprint | Privacy | Links</p>
+            </div>
+            <div class="ml-auto text-right">
+                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-instagram"></i>
+                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-facebook"></i>
+                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-twitter"></i>
+                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-google-plus"></i>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

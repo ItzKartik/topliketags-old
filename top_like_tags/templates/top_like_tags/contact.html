@@ -1,0 +1,52 @@
+{% extends 'top_like_tags/base.html' %}
+{% block base %}
+{% load static %}
+<style>
+.main_part, .overlay{
+    display: none !important;
+}
+</style>
+<Br><Br><br>
+<div class="container mx-auto text-center" style="padding: 40px;">
+    <h1 style="font-weight: 900;">CONTACT ME</h1>
+    <hr class="col-md-1" style="background: #f9333f;">
+    <form class="mx-auto text-center" method="post" action="{% url 'top_like_tags:contact' %}">{% csrf_token %}
+        <div class="form-group mr-auto text-left">
+            <label for="id_name"><b>Name</b></label>
+            <input name="id_name" id="id_name" class="form-control" placeholder="Name"/>
+        </div>
+        <div class="form-group mr-auto text-left">
+            <label for="id_email"><b>Email</b></label>
+            <input name="id_email" id="id_email" class="form-control" placeholder="Email Address"/>
+        </div>
+        <div class="form-group mr-auto text-left">
+            <label for="id_msg"><b>Your Message</b></label>
+            <textarea rows="10" name="id_msg" id="id_msg" class="form-control" placeholder="Message"></textarea>
+        </div>
+        <br><br>
+        <div class="form-group mr-auto text-left">
+            <button type="submit" style="color:white; background: #f9333f; border: none;" class="btn btn-primary">Send</button>
+        </div>
+    </form>
+</div>
+<br>
+<div class="container mx-auto text-center" style="z-index: 4;">
+    <h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>
+</div><br>
+<div class="col-md-12">
+    <div class="container" style="padding: 10px;">
+        <hr>
+        <div class="row">
+            <div class="mr-auto text-left">
+                <p style="font-size: 0.8rem;">Copyright: 2020 by topliketags.com | Imprint | Privacy | Links</p>
+            </div>
+            <div class="ml-auto text-right">
+                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-instagram"></i>
+                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-facebook"></i>
+                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-twitter"></i>
+                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-google-plus"></i>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

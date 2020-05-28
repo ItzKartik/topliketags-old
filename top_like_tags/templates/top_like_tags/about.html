@@ -1,0 +1,71 @@
+{% extends 'top_like_tags/base.html' %}
+{% block base %}
+{% load static %}
+<style>
+.main_part, .overlay{
+    display: none !important;
+}
+</style>
+    <Br><Br><br>
+    <div class="container mx-auto text-center">
+        <div class="row">
+            <div class="col-md-6" data-aos-offset="300" data-aos-duration="1000" data-aos-delay="50">
+                <div class="mx-auto text-center"  style="padding: 50px; width: 300px;">
+                    <img alt="" src="{% static 'logo1.png' %}" style="max-width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+            <div class="col-md-6" data-aos-offset="300" data-aos-duration="1000" data-aos-delay="50">
+                <div class=" mr-auto text-left">
+                    <p style="font-size: 1rem; font-weight: 900;">HELLO THERE!</p>
+                    <hr class="col" style="background: #f9333f;">
+                    <p style="color:grey;">Hi, my name is Toan. I'm 28 years old and I'm a web developer and designer based in Cloppenburg, Germany.</p>
+                    <p style="color:grey;">In 2015 my website wwww.all-hashtag.com started with a simple hashtag-generator tool. Since then my goal was to optimze it piece by piece. Today you can find 4 hashtag tools which can help you to search and find the best hashtags for your content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+<div class="container mx-auto text-center" style="z-index: 4;">
+    <h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>
+</div><br><br><br>
+    <div class="mx-auto text-center">
+        <div class="row">
+            <div class="col-md-4" style="background: red;">
+                <div class="text-left" style="padding: 60px;">
+                    <p style="color: white; font-size: 20px">Why All Hashtag</p>
+                    <p style="color: white; font-size: 15px">All Hashtag was made to be the smartest and best free website for hashtags. These days it's all about hashtags - that's why this page got its name. A free website with thousands of visitors world wide.</p>
+                </div>
+            </div>
+            <div class="col-md-4" style="background: #aa0000;">
+                <div class="text-left" style="padding: 60px;">
+                    <p style="color: white; font-size: 20px">What You Get</p>
+                    <p style="color: white; font-size: 15px">You get some cool and special tools for hashtags. Generate, create, analyze and search for the top hashtags. All hashtag tools were made to give you the best results you need for your content.</p>
+                </div>
+            </div>
+            <div class="col-md-4" style="background: #530000;">
+                <div class="text-left" style="padding: 60px;">
+                    <p style="color: white; font-size: 20px">Support All Hashtag</p>
+                    <p style="color: white; font-size: 15px">In the future All Hashtag will be optimized and more tools are going to be added. However, if you like my service and the hashtag tools, it would be great to support me by recommending my website.</p>
+                </div>
+            </div>
+        </div>
+    </div><br><Br><Br>
+<div class="container mx-auto text-center" style="z-index: 4;">
+<h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>
+<div class="col-md-12">
+    <div class="container" style="padding: 10px;">
+        <hr>
+        <div class="row">
+            <div class="mr-auto text-left">
+                <p style="font-size: 0.8rem;">Copyright: 2020 by topliketags.com | Imprint | Privacy | Links</p>
+            </div>
+            <div class="ml-auto text-right">
+                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-instagram"></i>
+                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-facebook"></i>
+                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-twitter"></i>
+                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-google-plus"></i>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
