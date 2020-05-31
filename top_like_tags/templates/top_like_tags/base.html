@@ -3,11 +3,10 @@
 <head>
     <title>Top Like Tags - Instagram Hashtag Generator</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Instagram Hashtag Generator In A New Way.">
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="John Doe">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{% static 'favicon.jpg' %}">
+    <link rel="icon" href="{% static 'logo1.png' %}">
     <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'flaticon/font/flaticon.css' %}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -93,8 +92,72 @@
             transition: ease 0.5s;
             color: #00e1ff !important;
         }
-        .navbar-toggler{
+        .navbar-toggler {
             border: none !important;
+        }
+        .btn:link,
+        .btn:visited {
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 15px 40px;
+            display: inline-block;
+            border-radius: 100px;
+            transition: all .2s;
+            position: absolute;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-white {
+            background-color: #fff;
+            color: #777;
+        }
+
+        .btn::after {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            border-radius: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: all .4s;
+        }
+
+        .btn-white::after {
+            background-color: #fff;
+        }
+
+        .btn:hover::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+
+        .btn-animated {
+            animation: moveInBottom 5s ease-out;
+            animation-fill-mode: backwards;
+        }
+
+        @keyframes moveInBottom {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0px);
+            }
         }
     </style>
 </head>
@@ -129,7 +192,7 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button><br>
-        <div class="navbar-img mx-auto text-center" style="width: 200px; padding: 20px;"><img style="display: block; max-width: 100%; height: auto;" src="{% static 'logo1.png' %}"></div>
+        <a href="{% url 'top_like_tags:index' %}"><div class="navbar-img mx-auto text-center" style="width: 200px; padding: 20px;"><img style="display: block; max-width: 100%; height: auto;" src="{% static 'logo1.png' %}"></div></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -157,53 +220,6 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
     AOS.init();
-    $('.main_form').submit(function (e) {
-    e.preventDefault();
-    if ($('.form-check-input').is(':checked')){
-        $('.error_txt').html('');
-        $.ajax({
-            url: "{% url 'top_like_tags:generator' %}",
-            type: 'POST',
-            data: {
-                keyword: $('#keyword_field').val(),
-                random: $('#random').val(),
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
-            },
-            success: function (data) {
-                $('.main_form')[0].reset();
-                $('.hashtags').html('');
-                $('.hash').show();
-                var d = JSON.parse(data);
-                if ($('#random').val() == 1) {
-                    for (var i = 0; i < d.length; i) {
-                        var r = Math.floor(Math.random() * d.length);
-                        $('.hashtags').append('#' + d[r] + ' ').fadeIn("slow");
-                        d.splice(r, 1);
-                    }
-                }
-                else{
-                    for (i=0; i < d.length; i++){
-                        $('.hashtags').append('#'+d[i]+' ').fadeIn("slow");
-                    }
-                }
-                var clipboard = new ClipboardJS('.btn');
-                window.scrollTo(0,500);
-            },
-            error: function (error) {
-                console.log(error)
-            }
-        });
-    }else{
-        $('.error_txt').append('<p class="mx-auto text-center" style="color: #f9333f;">Please Select One CheckBox To Start</p>');
-    }
-});
-function check_it(ele){
-    $('.form-check-input').prop('checked', false);
-    $('.form-check-input').val(0);
-    var e = '#'+ele;
-    $(e).val(1);
-    $(e).prop('checked', true);
-}
 </script>
 </body>
 </html>

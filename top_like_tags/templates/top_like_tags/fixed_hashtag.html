@@ -29,17 +29,20 @@
                 <div onclick="open_div(this);" class="main_div text-left col-md-8 mx-auto">
                     <div style="cursor: pointer;" class="row">
                         <div class="col-md-11">
-                            <h3>{{ hashtag.title }}</h3>
+                            <h3 style="color: #00a6ff;">{{ hashtag.title }}</h3>
+                            {% if hashtag.sub_title %}
+                                <h5>&nbsp;&nbsp;{{ hashtag.sub_title }}</h5>
+                            {% endif %}
                         </div>
                         <div class="col-md-1">
                             <i style="font-size: 1.6rem;" class="fa fa-chevron-down"></i>
                             <i style="display: none; font-size: 1.6rem;" class="fa fa-chevron-up"></i>
                         </div>
-                    </div>
+                    </div><Br>
                     <div class="hashtags_div mx-auto text-center">
                         <textarea style="display: none; font-size: 0.9rem;" rows="5" id="bar" class="form-control">{{ hashtag.hashtags }}</textarea><br>
                         <button data-clipboard-target="#bar" onclick="alert('Copied To Clipboard !');" style="display: none; background: transparent; color: black;" class="btn btn-primary text-center mx-auto">Copy</button>
-                    </div>
+                    </div><Br>
                     <script>
                         function open_div(ele) {
                             $('.main_div').attr('onclick', 'close_div(this);')

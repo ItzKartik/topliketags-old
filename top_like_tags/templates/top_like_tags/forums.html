@@ -19,10 +19,10 @@
                 {% for b in blog %}
                     <div class="card mx-auto text-center" style="width: 18rem;  margin: 5px;">
                       <img class="card-img-top" src="{{ b.blogimg.url }}" style="width: auto; height: 230px;" alt="Card image cap">
-                      <div class="card-body text-left">
+                      <div class="card-body text-center">
                         <h5 class="card-title">{{ b.title|truncatechars:60 }}</h5>
                         <p class="card-text">{{ b.text|truncatechars:70 }}</p>
-                        <a href="{% url 'top_like_tags:full_blog' blog_id=b.title %}" class="btn btn-primary">Read More</a>
+                        <a href="{% url 'top_like_tags:full_blog' blog_id=b.blogurl %}"><button class="btn btn-primary">Read More</button></a>
                       </div>
                     </div>
                 {% endfor %}

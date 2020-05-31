@@ -15,10 +15,10 @@ from django.views.generic.base import View
 
 def index(request):
     model = blog_posts.objects.all()
-    if len(model) < 3:
+    if len(model) < 4:
         pass
     else:
-        model = model[:3]
+        model = model[:4]
     return render(request, 'top_like_tags/index.html', {'blog': model})
 
 
@@ -28,7 +28,7 @@ def fixed(request):
 
 
 def full_blog(request, blog_id):
-    model = blog_posts.objects.get(b_url=blog_id)
+    model = blog_posts.objects.get(blogurl=blog_id)
     return render(request, 'top_like_tags/full_blog.html', {'blog': model})
 
 
