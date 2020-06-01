@@ -17,7 +17,7 @@
         <div class="row mx-auto text-center">
             {% if blog %}
                 {% for b in blog %}
-                    <div class="card mx-auto text-center" style="width: 18rem;  margin: 5px;">
+                    <div class="card mx-auto text-left" style="width: 18rem;  margin: 5px;">
                       <img class="card-img-top" src="{{ b.blogimg.url }}" style="width: auto; height: 230px;" alt="Card image cap">
                       <div class="card-body text-center">
                         <h5 class="card-title">{{ b.title|truncatechars:60 }}</h5>
