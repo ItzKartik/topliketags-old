@@ -29,9 +29,8 @@
             <!--<div class="col-md-8 mx-auto text-center" style="z-index: 4;">
                 <h1 style="border-radius: 10px; padding: 20px; border: 2px solid white;">Space for ads...</h1>
             </div>-->
-            <div class="col-md-6 mx-auto text-center" style="margin: 100px 0px 0px 0px; z-index: 4;">
-                <h3 style="">GENERATE EASY & FAST THE BEST HASHTAGS FOR
-                    - INSERT A WORD TO GENERATE</h3>
+            <div class="col-md-6 main_tab mx-auto text-center" style="margin: 100px 0px 0px 0px; z-index: 4;">
+                <h3 style="">FREE HASHTAGS GENERATOR – Find Your Trending Hashtags</h3>
             </div>
         </div>
         <!--WorkingPart-->
@@ -63,10 +62,10 @@
         </div>
         <div class="col-md-6 mx-auto text-left hash" style="z-index: 4; padding: 20px 20px 20px 20px; display: none;">
             <div style="color: black;">
-                <textarea rows="6" style="border-radius: 10px;" id="bar" class="hashtags form-control"></textarea>
+                <textarea rows="7" style="border-radius: 10px;" id="bar" class="hashtags form-control"></textarea>
             </div><br>
             <div class="mx-auto text-center">
-                <button data-clipboard-target="#bar" style="background: transparent; color: black;" class="btn btn-primary">Copy</button>
+                <button data-clipboard-target="#bar" onclick="alert('Copied To Clipboard');" style="background: transparent; color: black;" class="btn btn-primary">Copy</button>
             </div>
         </div><br><br><br>
         <!--Blogs-->
@@ -95,71 +94,46 @@
         <div class="container">
             <div class="col-md-6 mx-auto text-center">
                 <br>
-                <h3 style="font-weight: 900;">WHY ALL HASHTAG?</h3>
+                <h3 style="font-weight: 900;">Why Hashtags are Important?</h3>
                 <hr class="col-md-1" style="background: #f9333f;">
-                <p>It's easy to use, fast and for free.</p><br>
+{#                <p>Why Hashtags are Important?</p>#}<br><Br>
             </div>
             <div class="row">
                 <div class="col-md-4" style="padding: 10px;">
                     <div class="row">
-                        <div class="col-md-3" style="padding: 20px 20px 20px 20px;">
-                            <i style="font-size: 2.5rem;" class="fas fa-users"></i>
+                        <div class="insta-img mx-auto text-center" style="width: 50px; margin: 0px 0px 0px 0px">
+                            <img style="max-width: 100%; height: auto; display: block;" src="{% static 'arrow-up.png' %}">
                         </div>
                         <div class="col-md-9">
-                            <h6>More Followers</h6>
-                            <p>Get more followers and fans on
-                                instagram,  twitter,  facebook and other social media platforms.</p>
+                            <h6>Increase Your Reach</h6>
+                            <p>TopLikeTags algorithm detects the real time trending hashtags to increase the
+                                exposure of your content.</p>
                         </div>
                     </div><br>
-                    <div class="row">
-                        <div class="col-md-3" style="padding: 20px 20px 20px 20px;">
-                            <i style="font-size: 2.5rem;" class="fas fa-gift"></i>
-                        </div>
-                        <div class="col-md-9">
-                            <h6>Free to use</h6>
-                            <p>One of the benefit of this website is that all services and hashtag tools are 100% for free.</p>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-md-4" style="padding: 10px;">
                     <div class="row">
-                        <div class="col-md-3" style="padding: 20px 20px 20px 20px;">
-                            <i style="font-size: 2.5rem;" class="fas fa-thumbs-up"></i>
+                        <div class="insta-img mx-auto text-center" style="width: 50px; margin: 0px 0px 0px 0px">
+                            <img style="max-width: 100%; height: auto; display: block;" src="{% static 'popular.png' %}">
                         </div>
                         <div class="col-md-9">
-                            <h6>More likes</h6>
-                            <p>Push your contents, photos and videos with the hashtag tools to get more likes.</p>
+                            <h6>More Followers & Likes on Social Media</h6>
+                            <p>Our relevant hashtags help you push the content to gain more followers
+                                and likes.</p>
                         </div>
                     </div><br>
-                    <div class="row">
-                        <div class="col-md-3" style="padding: 20px 20px 20px 20px;">
-                            <i style="font-size: 2.5rem;" class="fas fa-life-ring"></i>
-                        </div>
-                        <div class="col-md-9">
-                            <h6>Support</h6>
-                            <p>If you have any questions or suggestions about my work or about my person, feel free to contact me.</p>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-md-4" style="padding: 10px;">
                     <div class="row">
-                        <div class="col-md-3" style="padding: 20px 20px 20px 20px;">
-                            <i style="font-size: 2.5rem;" class="fas fa-chart-line"></i>
+                        <div class="insta-img mx-auto text-center" style="width: 50px; margin: 0px 0px 0px 0px">
+                            <img style="max-width: 100%; height: auto; display: block;" src="{% static 'emoji.png' %}">
                         </div>
                         <div class="col-md-9">
-                            <h6>More Success</h6>
-                            <p>Amplify your products, posts and brands with the best hashtags to become more successful.</p>
+                            <h6>This is Free</h6>
+                            <p>Our hashtag tools are totally free of charge. You can generate as many
+                                top hashtags as you want.</p>
                         </div>
                     </div><br>
-                    <div class="row">
-                        <div class="col-md-3" style="padding: 20px 20px 20px 20px;">
-                            <i style="font-size: 2.5rem;" class="fas fa-heart"></i>
-                        </div>
-                        <div class="col-md-9">
-                            <h6>Mae with love</h6>
-                            <p>All hashtag tools are made with a lot of care and coffee  to give you the best results that you need.</p>
-                        </div>
-                    </div>
                 </div>
             </div><br><br><br>
         </div>
@@ -170,19 +144,21 @@
     <div class="container">
             <div class="row">
                 <div class="col-md-6" style="padding: 20px;">
-                    <h4 style="font-weight: 900;">IT'S ALL ABOUT HASHTAGS</h4>
+                    <h4 style="font-weight: 900;">Trending Hashtags for 2020 😎🤳🍜</h4>
                     <hr style="background-color: #f9333f;">
-                    <p style="color: #535353;">Nowadays hashtags are everywhere. You see them on Instagram, Twitter, Pinterest, Google+ and Facebook. Hashtags can expand your content reach, amplify your brand and products, get your content found, improve your SEO ranking and even more.</p><br>
-                    <p style="color: #535353;">All Hashtag is a website, that will help you to create and analyse fast and easy top relevant hashtags for your social media content and marketing. You can generate thousands of relevant hashtags that you simply copy and paste into your social media posts.</p>
+                    <p style="color: #535353;">We constantly update our algorithm to provide you the best hashtags. Social Media Algorithms like to keep content fresh from time to time. So when your posts
+                    are tagged with trending hashtags, your photos/ videos may have a chance to get featured on explore
+                    page.</p>
                 </div>
                 <div class="col-md-6 mx-auto text-center" style="padding: 20px;">
-                    <div class="insta-img mx-auto text-center" style="width: 200px; margin: 0px 0px 50px 0px">
-                        <img style="max-width: 100%; height: auto; display: block;" src="{% static 'logo1.png' %}">
-                    </div>
-                    <h4 style="font-weight: 900;">HASHTAGS FOR INSTAGRAM</h4>
-                    <hr style="background-color: #f9333f; width: 20%;">
-                    <p style="color: #535353; padding: 0px 20px 0px 20px;">You want more followers and more likes for your Instagram?
-                    Generate 30 hashtags for one post with the <span style="color: #f9333f;">hashtag generator.</span></p>
+{#                    <div class="insta-img mx-auto text-center" style="width: 200px; margin: 0px 0px 50px 0px">#}
+{#                        <img style="max-width: 100%; height: auto; display: block;" src="{% static 'logo1.png' %}">#}
+{#                    </div>#}
+                    <h4 style="font-weight: 900;">Copy and Paste Hashtags ⚙</h4>
+                    <hr style="background-color: #f9333f;">
+                    <p style="color: #535353; padding: 0px 20px 0px 20px;">Instagram only allows up to 30 hashtags each post. By Inserting a keyword
+                    in our hashtags generator, 30 most relevant hashtags will be generated. You can easily copy and paste
+                    the hashtags onto your posts</p>
                 </div>
             </div>
         </div><Br><br><br>
