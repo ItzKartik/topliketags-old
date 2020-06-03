@@ -36,53 +36,77 @@
 <div class="container mx-auto text-center" style="z-index: 4;">
     <h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>
 </div><br><br><br>
-    <div class="mx-auto text-center">
+{#    <div class="mx-auto text-center">#}
+{#        <div class="row">#}
+{#            <div class="col-md-4" style="background: red;">#}
+{#                <div class="text-left" style="padding: 60px;">#}
+{#                    <p style="color: white; font-size: 20px">Why All Hashtag</p>#}
+{#                    <p style="color: white; font-size: 15px">All Hashtag was made to be the smartest and best free website for hashtags. These days it's all about hashtags - that's why this page got its name. A free website with thousands of visitors world wide.</p>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-md-4" style="background: #aa0000;">#}
+{#                <div class="text-left" style="padding: 60px;">#}
+{#                    <p style="color: white; font-size: 20px">What You Get</p>#}
+{#                    <p style="color: white; font-size: 15px">You get some cool and special tools for hashtags. Generate, create, analyze and search for the top hashtags. All hashtag tools were made to give you the best results you need for your content.</p>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-md-4" style="background: #530000;">#}
+{#                <div class="text-left" style="padding: 60px;">#}
+{#                    <p style="color: white; font-size: 20px">Support All Hashtag</p>#}
+{#                    <p style="color: white; font-size: 15px">In the future All Hashtag will be optimized and more tools are going to be added. However, if you like my service and the hashtag tools, it would be great to support me by recommending my website.</p>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div><br><Br><Br>#}
+    <div class="mx-auto col-md-12 text-center">
+        {#     git init #}
+        {#     git add . #}
+        {#     git commit -am "make it" #}
+        {#     git push origin master #}
+        <div class="col-md-6 mx-auto text-center">
+            <br>
+            <h3 style="font-weight: 900;">Our Hashtag Tools</h3>
+            <hr class="col-md-1" style="background: #f9333f;"><br><Br>
+        </div>
         <div class="row">
-            <div class="col-md-4" style="background: red;">
-                <div class="text-left" style="padding: 60px;">
-                    <p style="color: white; font-size: 20px">Why All Hashtag</p>
-                    <p style="color: white; font-size: 15px">All Hashtag was made to be the smartest and best free website for hashtags. These days it's all about hashtags - that's why this page got its name. A free website with thousands of visitors world wide.</p>
+            <div class="col-md-4" style="padding: 50px;">
+                <div onclick="window.location.replace('{% url 'top_like_tags:index' %}');" class="tools_con text-center" style="box-shadow: 0px 0px 10px 0px #9c9c9c; padding: 50px; border: 2px solid grey; border-radius: 20px;">
+                    <div class="insta-img mx-auto text-center" style="width: 50px; margin: 0px 0px 0px 0px">
+                        <img style="max-width: 100%; height: auto; display: block;" src="{% static 'hydro-power.png' %}">
+                    </div><br>
+                    <p style="font-size: 20px">Automatic Hashtags Generator</p>
                 </div>
             </div>
-            <div class="col-md-4" style="background: #aa0000;">
-                <div class="text-left" style="padding: 60px;">
-                    <p style="color: white; font-size: 20px">What You Get</p>
-                    <p style="color: white; font-size: 15px">You get some cool and special tools for hashtags. Generate, create, analyze and search for the top hashtags. All hashtag tools were made to give you the best results you need for your content.</p>
+            <div class="col-md-4" style="padding: 50px;">
+                <div onclick="window.location.replace('{% url 'top_like_tags:fixed_hashtag' %}');" class="tools_con text-center" style="box-shadow: 0px 0px 10px 0px #9c9c9c; padding: 50px; border: 2px solid grey; border-radius: 20px;">
+                    <div class="insta-img mx-auto text-center" style="width: 50px; margin: 0px 0px 0px 0px">
+                        <img style="max-width: 100%; height: auto; display: block;" src="{% static 'hashtag.png' %}">
+                    </div><br>
+                    <p style="font-size: 20px">Top Handpicked Hashtags</p>
                 </div>
             </div>
-            <div class="col-md-4" style="background: #530000;">
-                <div class="text-left" style="padding: 60px;">
-                    <p style="color: white; font-size: 20px">Support All Hashtag</p>
-                    <p style="color: white; font-size: 15px">In the future All Hashtag will be optimized and more tools are going to be added. However, if you like my service and the hashtag tools, it would be great to support me by recommending my website.</p>
+            <div class="col-md-4" style="padding: 50px;">
+                <div onclick="window.location.replace('{% url 'top_like_tags:forums' %}');" class="tools_con text-center" style="box-shadow: 0px 0px 10px 0px #9c9c9c; padding: 50px; border: 2px solid grey; border-radius: 20px;">
+                    <div class="insta-img mx-auto text-center" style="width: 50px; margin: 0px 0px 0px 0px">
+                        <img style="max-width: 100%; height: auto; display: block;" src="{% static 'question.png' %}">
+                    </div><br>
+                    <p style="font-size: 20px">Hashtags Tips</p>
                 </div>
             </div>
         </div>
     </div><br><Br><Br>
+            <style>
+                .tools_con:hover{
+                    transition: ease ease-out 0.4s;
+                    {#color: white;#}
+                    cursor: pointer;
+                    box-shadow: none !important;
+                    {#background: #00e1ff;#}
+                }
+            </style>
     <div class="container mx-auto text-center" style="z-index: 4;">
     <h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>
     </div><br><bR><Br>
-    <div class="mx-auto text-center">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="text-center" style="padding: 60px;">
-                    <i style="font-size: 3rem; color: #007bff;" class="mx-auto text-center fas fa-chart-bar"></i><br><Br>
-                    <p style="color: black; font-size: 20px">Automatic Hashtags Generator</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="text-center" style="padding: 60px;">
-                    <i style="font-size: 3rem; color: #007bff;" class="mx-auto text-center fas fa-chart-bar"></i><br><Br>
-                    <p style="color: black; font-size: 20px">Top Handpicked Hashtags</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="text-center" style="padding: 60px;">
-                    <i style="font-size: 3rem; color: #007bff;" class="mx-auto text-center fas fa-chart-bar"></i><br><Br>
-                    <p style="color: black; font-size: 20px">Hashtags Tips</p>
-                </div>
-            </div>
-        </div>
-    </div><br><Br><Br>
 <div class="col-md-12">
     <div class="container" style="padding: 10px;">
         <hr>

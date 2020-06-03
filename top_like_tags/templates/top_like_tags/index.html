@@ -22,6 +22,7 @@
     .fas{
         color: #f9333f;
     }
+
     </style>
     <div class="col-md-12">
         <!--TopPart-->
@@ -34,7 +35,7 @@
             </div>
         </div>
         <!--WorkingPart-->
-        <div class="container mx-auto text-center" style="color: white;">
+        <div class="container wp mx-auto text-center" style="color: white; height: 300px;">
             <div class="col-md-5 text-center mx-auto" style="z-index: 4;">
                 <form method="post" class="main_form mx-auto text-center">{% csrf_token %}
                     <div class="form-group">
@@ -103,9 +104,9 @@
                     <div class="row">
                         <div class="insta-img mx-auto text-center" style="width: 50px; margin: 0px 0px 0px 0px">
                             <img style="max-width: 100%; height: auto; display: block;" src="{% static 'arrow-up.png' %}">
-                        </div>
-                        <div class="col-md-9">
-                            <h6>Increase Your Reach</h6>
+                        </div><br>
+                        <div class="col-md-9"><br>
+                            <h6 style="font-weight: 900;">Increase Your Reach</h6><Br>
                             <p>TopLikeTags algorithm detects the real time trending hashtags to increase the
                                 exposure of your content.</p>
                         </div>
@@ -116,8 +117,8 @@
                         <div class="insta-img mx-auto text-center" style="width: 50px; margin: 0px 0px 0px 0px">
                             <img style="max-width: 100%; height: auto; display: block;" src="{% static 'popular.png' %}">
                         </div>
-                        <div class="col-md-9">
-                            <h6>More Followers & Likes on Social Media</h6>
+                        <div class="col-md-9"><br>
+                            <h6 style="font-weight: 900;">More Followers & Likes on Social Media</h6><Br>
                             <p>Our relevant hashtags help you push the content to gain more followers
                                 and likes.</p>
                         </div>
@@ -127,9 +128,9 @@
                     <div class="row">
                         <div class="insta-img mx-auto text-center" style="width: 50px; margin: 0px 0px 0px 0px">
                             <img style="max-width: 100%; height: auto; display: block;" src="{% static 'emoji.png' %}">
-                        </div>
-                        <div class="col-md-9">
-                            <h6>This is Free</h6>
+                        </div><br>
+                        <div class="col-md-9"><br>
+                            <h6 style="font-weight: 900;">This is Free</h6><Br>
                             <p>Our hashtag tools are totally free of charge. You can generate as many
                                 top hashtags as you want.</p>
                         </div>
@@ -150,13 +151,10 @@
                     are tagged with trending hashtags, your photos/ videos may have a chance to get featured on explore
                     page.</p>
                 </div>
-                <div class="col-md-6 mx-auto text-center" style="padding: 20px;">
-{#                    <div class="insta-img mx-auto text-center" style="width: 200px; margin: 0px 0px 50px 0px">#}
-{#                        <img style="max-width: 100%; height: auto; display: block;" src="{% static 'logo1.png' %}">#}
-{#                    </div>#}
+                <div class="col-md-6 mx-auto text-left" style="padding: 20px;">
                     <h4 style="font-weight: 900;">Copy and Paste Hashtags ⚙</h4>
                     <hr style="background-color: #f9333f;">
-                    <p style="color: #535353; padding: 0px 20px 0px 20px;">Instagram only allows up to 30 hashtags each post. By Inserting a keyword
+                    <p style="color: #535353;">Instagram only allows up to 30 hashtags each post. By Inserting a keyword
                     in our hashtags generator, 30 most relevant hashtags will be generated. You can easily copy and paste
                     the hashtags onto your posts</p>
                 </div>
