@@ -44,7 +44,7 @@
                     </div><Br>
                     <div class="hashtags_div mx-auto text-center">
                         <textarea style="display: none; font-size: 0.9rem;" rows="5" id="bar" class="form-control">{{ hashtag.hashtags }}</textarea><br>
-                        <button data-clipboard-target="#bar" onclick="alert('Copied To Clipboard !');" style="display: none; background: transparent; color: black;" class="btn btn-primary text-center mx-auto">Copy</button>
+                        <button data-clipboard-target="#bar" onclick="alert('Copied! You can now paste them :)');" style="display: none; background: transparent; color: black;" class="btn btn-primary text-center mx-auto">Copy</button>
                     </div><Br>
                     <script>
                         function open_div(ele) {
@@ -75,20 +75,35 @@
 
     </div>
     <!--Footer-->
-    <div class="col-md-12">
-        <div class="container" style="padding: 10px;">
-            <hr>
-            <div class="row">
-                <div class="mr-auto text-left">
-                    <p style="font-size: 0.8rem;">Copyright: 2020 by topliketags.com | Imprint | Privacy | Links</p>
-                </div>
-                <div class="ml-auto text-right">
-                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-instagram"></i>
-                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-facebook"></i>
-                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-twitter"></i>
-                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-google-plus"></i>
+<div class="col-md-12">
+                <div class="container" style="padding: 10px;">
+                    <hr>
+                    <div class="row">
+                        <div class="mr-auto text-left">
+                            <p style="font-size: 0.8rem;">Copyright © 2020 TopLikeTags
+                                <a class="ftxt" href="{% url 'top_like_tags:about' %}">| About |</a>
+                                <a class="ftxt" href="{% url 'top_like_tags:policy' %}">Privacy |</a>
+                                <a class="ftxt" href="{% url 'top_like_tags:contact' %}">Contact</a>
+                        </div><br>
+                        <div class="ftxt_show mr-auto text-center" style="font-size: 0.8rem; display: none">
+                            <a href="{% url 'top_like_tags:about' %}">About</a>
+                            <a href="{% url 'top_like_tags:policy' %}">Privacy</a>
+                            <a href="{% url 'top_like_tags:contact' %}">Contact</a>
+                        </div><Br><Br>
+                        <div class="mx-auto text-center">
+                            <p style="font-size: 0.8rem;">Need Help? Email hello@topliketags.com</p>
+                        </div>
+                        <div class="ml-auto text-right">
+                            <a href="https://www.instagram.com/topliketags">
+                                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-instagram"></i>
+                            </a>
+                            <a href="facebook: https://www.facebook.com/TopLikeTags/">
+                                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-facebook"></i>
+                            </a>
+        {#                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-twitter"></i>#}
+        {#                    <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-google-plus"></i>#}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 {% endblock %}

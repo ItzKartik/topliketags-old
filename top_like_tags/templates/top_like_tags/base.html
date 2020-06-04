@@ -25,12 +25,18 @@
 
         }
         @media(max-width: 770px){
+            .ftxt{
+                display: none !important;
+            }
+            .ftxt_show{
+                display: block !important;
+            }
             .wp{
                  height: 200px !important;
             }
             .navbar-img{
-                width: 100% !important;
-                padding: 50px !important;
+                text-align: center !important;
+                width: 50% !important;
             }
             .navbar-toggler{
                 position: absolute;
@@ -43,6 +49,9 @@
             }
             .main_tab{
                 margin: 10px 0px 0px 0px !important;
+            }
+            .main_part, .overlay{
+                height: 650px !important;
             }
         }
         a{
@@ -73,6 +82,9 @@
             background-size: cover;
             opacity: 0.8;
             background-repeat: no-repeat;
+        }
+        .navbar-img:hover{
+            cursor: pointer;
         }
          div.overlay{
             z-index: 3;
@@ -171,36 +183,18 @@
 <body>
 <div class="overlay"></div>
 <div class="main_part"></div>
-{#<div class="col-md-12 nv">#}
-{#    <div class="mx-auto text-center" style="width: 200px; padding: 20px;">#}
-{#        <img style="max-width: 100%; height: auto; display: block;" src="{% static 'logo1.png' %}">#}
-{#    </div><br>#}
-{#    <div class="col-md-6 mx-auto text-centr">#}
-{#        <div class="row mx-auto text-center">#}
-{#            <div class="nav_ids col">#}
-{#                <a class="nav_id home" href="">HOME <span class="sr-only">(current)</span></a>#}
-{#            </div>#}
-{#            <div class="nav_ids col">#}
-{#                <a class="nav_id about_us" href="">ABOUT</a>#}
-{#            </div>#}
-{#            <div class="nav_ids col">#}
-{#                <a class="nav_id forums" href="">FORUMS</a>#}
-{#            </div>#}
-{#            <div class="nav_ids col">#}
-{#                <a class="nav_id contact_us" href="">CONTACT</a>#}
-{#            </div>#}
-{#        </div><br>#}
-{#    </div>#}
-{#</div>#}
 <script>
 </script>
 <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light" style="
 border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: none; z-index: 4; background: white !important;">
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container mx-auto text-center">
+        <button class="navbar-toggler"
+                type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button><br>
-        <div onclick="window.location.replace('{% url 'top_like_tags:index' %}');" class="navbar-img" style="width: 200px; padding: 20px;"><img style="display: block; max-width: 100%; height: auto;" src="{% static 'logo1.png' %}"></div>
+        <div onclick="window.location.replace('{% url 'top_like_tags:index' %}');"
+             class="mx-auto navbar-img text-center" style="width: 200px; padding: 20px;">
+            <img class="mx-auto text-center" style="display: block; max-width: 100%; height: auto;" src="{% static 'logo1.png' %}"></div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -210,10 +204,10 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
                     <a class="nav-link" href="{% url 'top_like_tags:about' %}">ABOUT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'top_like_tags:forums' %}">FORUMS</a>
+                    <a class="nav-link" href="{% url 'top_like_tags:forums' %}">HASHTAG TIPS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'top_like_tags:fixed_hashtag' %}">POPULAR</a>
+                    <a class="nav-link" href="{% url 'top_like_tags:fixed_hashtag' %}">MOST POPULAR HASHTAGS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'top_like_tags:contact' %}">CONTACT</a>
