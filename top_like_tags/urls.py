@@ -20,7 +20,5 @@ urlpatterns = [
     re_path('blog/(?P<blog_id>[\w-]+)', views.full_blog, name='full_blog'),
     path('generator/', views.generator.as_view(), name='generator'),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
