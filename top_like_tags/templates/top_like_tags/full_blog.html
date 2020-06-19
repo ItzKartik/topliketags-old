@@ -21,7 +21,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
-    <script data-ad-client="ca-pub-3557075530543855" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script data-ad-client="ca-pub-3557075530543855" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open Sans|Playfair Display|Work Sans|Cormorant Garamond|Lora|Lobster|Josefin Sans|Roboto|Dancing Script|Abril Fatface|&display=swap" rel="stylesheet">
     <style>
         body{
@@ -119,7 +120,7 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
         </button><br>
         <div onclick="window.location.replace('{% url 'top_like_tags:index' %}');"
              class="mx-auto navbar-img text-center" style="width: 200px; padding: 20px;">
-            <img class="mx-auto text-center" style="display: block; max-width: 100%; height: auto;" src="{% static 'logo1.png' %}"></div>
+            <img alt="topliketags logo" class="mx-auto text-center" style="display: block; max-width: 100%; height: auto;" src="{% static 'logo1.png' %}"></div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -160,21 +161,6 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
             {% endif %}
                 </div>
             <br><br><br><br>
-            <div class="container mx-auto text-center ads" style="z-index: 4;">
-                <!--<h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>-->
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- toplikesocial -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3557075530543855"
-     data-ad-slot="5030182906"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-            </div><br><br><br>
 
             <div class="col-md-12">
                 <div class="container" style="padding: 10px;">
@@ -206,6 +192,10 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
                         </div>
                     </div>
                 </div>
-            </div>
+            </div><script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+            <script>
+                AOS.init();
+            </script>
 </body>
 </html>

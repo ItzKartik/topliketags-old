@@ -5,6 +5,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from .models import blog_posts, fixed_hashtag, analytics
+from top_like_tags import models
 from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -13,7 +14,16 @@ import requests
 from django.views.generic.base import View
 
 
+def about(request):
+    m = models.about.objects.get(id=1)
+    return render(request, 'top_like_tags/about.html', {'seo': m})
+
+def policy(request):
+    m = models.policy.objects.get(id=1)
+    return render(request, 'top_like_tags/about.html', {'seo': m})
+
 def index(request):
+    m = models.home.objects.get(id=1)
     a = analytics.objects.get(id=1)
     a.home_page = a.home_page+1
     a.save()
@@ -22,15 +32,24 @@ def index(request):
         pass
     else:
         model = model[:4]
-    return render(request, 'top_like_tags/index.html', {'blog': model})
+    data = {
+        'blog': model,
+        'seo': m
+    }
+    return render(request, 'top_like_tags/index.html', data)
 
 
 def fixed(request):
+    m = models.fixed_hashtag.objects.get(id=1)
     a = analytics.objects.get(id=1)
     a.popular_hashtag = a.popular_hashtag+1
     a.save()
     model = fixed_hashtag.objects.all()
-    return render(request, 'top_like_tags/fixed_hashtag.html', {'fixed_hash': model})
+    data = {
+        'fixed_hash': model,
+        'seo': m
+    }
+    return render(request, 'top_like_tags/fixed_hashtag.html', data)
 
 
 def full_blog(request, blog_id):
@@ -42,11 +61,17 @@ def full_blog(request, blog_id):
 
 
 def forums(request):
+    m = models.hashtag_tips.objects.get(id=1)
+
     a = analytics.objects.get(id=1)
     a.forums = a.forums+1
     a.save()
     model = blog_posts.objects.all()
-    return render(request, 'top_like_tags/forums.html', {'blog': model})
+    data = {
+        'blog': model,
+        'seo': m
+    }
+    return render(request, 'top_like_tags/forums.html', data)
 
 
 class generator(View):
@@ -130,7 +155,12 @@ def contact(request):
         smtp_server.close()
         return redirect('top_like_tags:index')
     else:
+        m = models.contact_page.objects.get(id=1)
+        
         a = analytics.objects.get(id=1)
         a.contact = a.contact+1
         a.save()
+        data = {
+            'seo': m
+        }
         return render(request, 'top_like_tags/contact.html')

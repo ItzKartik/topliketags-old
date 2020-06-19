@@ -1,6 +1,36 @@
 from django.db import models
 
 
+class home(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=3000)
+    keywords = models.CharField(max_length=3000)
+
+class about(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=3000)
+    keywords = models.CharField(max_length=3000)
+
+class hashtag_tips(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=3000)
+    keywords = models.CharField(max_length=3000)
+
+class most_popular_hashtags(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=3000)
+    keywords = models.CharField(max_length=3000)
+
+class contact_page(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=3000)
+    keywords = models.CharField(max_length=3000)
+
+class policy_page(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=3000)
+    keywords = models.CharField(max_length=3000)
+
 class blog_posts(models.Model):
     blogimg = models.FileField(null=False, blank=False)
     blogurl = models.CharField(max_length=100)

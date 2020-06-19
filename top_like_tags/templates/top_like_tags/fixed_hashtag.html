@@ -1,11 +1,258 @@
-{% extends 'top_like_tags/base.html' %}
-{% block base %}
     {% load static %}
+    <html>
+    <head>
+        {% if seo %}
+        <title>{{ seo.title }}</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="{{ seo.description }}">
+        <meta name="keywords" content="{{ seo.keywords }}">
+        {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{% static 'logo1.png' %}">
+        <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}"/>
+        <link rel="stylesheet" href="{% static 'flaticon/font/flaticon.css' %}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'animate.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open Sans|Playfair Display|Work Sans|Cormorant Garamond|Lora|Lobster|Josefin Sans|Roboto|Dancing Script|Abril Fatface|&display=swap" rel="stylesheet">
+        <script data-ad-client="ca-pub-3557075530543855" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+        </script>
+        <style>
+            body{
+                font-family: 'Josefin Sans';
+            }
+            @media(max-width: 1100px){
+    
+            }
+            @media(max-width: 650px){
+                .ftxt{
+                    display: none !important;
+                }
+                .ftxt_show{
+                    display: block !important;
+                }
+                .wp{
+                     height: 200px !important;
+                }
+                .navbar-img{
+                    text-align: center !important;
+                    width: 50% !important;
+                }
+                .navbar-toggler{
+                    position: absolute;
+                }
+                .navbar-collapse{
+                    text-align: right;
+                }
+                .navbar{
+                    height: auto !important;
+                }
+                .main_tab{
+                    margin: 10px 0px 0px 0px !important;
+                }
+                .main_part, .overlay{
+                    height: 500px;
+                }
+            }
+            a{
+                text-decoration: none;
+            }
+            html{
+                scroll-behavior: smooth;
+            }
+            .nav_id{
+                font-weight: 700;
+                font-size: 1rem;
+                {#color: #4b4b4b;#}
+                color: white;
+            }
+            .nav_id:hover{
+                text-decoration: none !important;
+                transition: ease 0.5s;
+                color: #00e1ff !important;
+            }
+            @media(max-width: 770px){
+                .ftxt{
+                    display: none !important;
+                }
+                .ftxt_show{
+                    display: block !important;
+                }
+                .wp{
+                     height: 200px !important;
+                }
+                .navbar-img{
+                    text-align: center !important;
+                    width: 50% !important;
+                }
+                .navbar-toggler{
+                    position: absolute;
+                }
+                .navbar-collapse{
+                    text-align: right;
+                }
+                .navbar{
+                    height: auto !important;
+                }
+                .main_tab{
+                    margin: 10px 0px 0px 0px !important;
+                }
+                .main_part{
+                    height: 450px !important;
+                }
+                .overlay{
+                    height: 450px !important;
+                }
+            }
+            div.main_part{
+                z-index: 2;
+                width: 100%;
+                height: 600px;
+                position: absolute;
+                box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+                background: url("{% static 'bg.jpg' %}");
+                background-position: center;
+                background-size: cover;
+                opacity: 0.8;
+                background-repeat: no-repeat;
+            }
+            .navbar-img:hover{
+                cursor: pointer;
+            }
+             div.overlay{
+                z-index: 3;
+                width: 100%;
+                height: 600px;
+                position: absolute;
+                box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+                border-radius: 5px;
+                {#background-color: rgba(255, 255, 255, 0.15);#}
+                background-color: rgba(0, 0, 0, 0.57);
+                backdrop-filter: blur(3px);
+                color: #fff;
+            }
+            .nv{
+                background: rgba(0, 0, 0, 0.23);
+                {#background: rgba(255, 255, 255, 0.62);#}
+                z-index: 4;
+                color: white;
+            }
+            .nav-link{
+                color: black !important;
+            }
+            .nav-link:hover{
+                transition: ease 0.5s;
+                color: #00e1ff !important;
+            }
+            .navbar-toggler {
+                border: none !important;
+            }
+            .btn:link,
+            .btn:visited {
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 15px 40px;
+                display: inline-block;
+                border-radius: 100px;
+                transition: all .2s;
+                position: absolute;
+            }
+    
+            .btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+    
+            .btn:active {
+                transform: translateY(-1px);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+    
+            .btn-white {
+                background-color: #fff;
+                color: #777;
+            }
+    
+            .btn::after {
+                content: "";
+                display: inline-block;
+                height: 100%;
+                width: 100%;
+                border-radius: 100px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: all .4s;
+            }
+    
+            .btn-white::after {
+                background-color: #fff;
+            }
+    
+            .btn:hover::after {
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity: 0;
+            }
+    
+            .btn-animated {
+                animation: moveInBottom 5s ease-out;
+                animation-fill-mode: backwards;
+            }
+    
+            @keyframes moveInBottom {
+                0% {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+    
+                100% {
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+            }
+        </style>
+    </head>
+    <body>
     <style>
     .main_part, .overlay{
         display: none;
     }
     </style>
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light" style="
+    border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: none; z-index: 4; background: white !important;">
+        <div class="container mx-auto text-center">
+            <button class="navbar-toggler"
+                    type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button><br>
+            <div onclick="window.location.replace('{% url 'top_like_tags:index' %}');"
+                 class="mx-auto navbar-img text-center" style="width: 200px; padding: 20px;">
+                <img alt="topliketags logo" class="mx-auto text-center" style="display: block; max-width: 100%; height: auto;" src="{% static 'logo1.png' %}"></div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'top_like_tags:index' %}">HOME <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'top_like_tags:about' %}">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'top_like_tags:forums' %}">HASHTAG TIPS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'top_like_tags:fixed_hashtag' %}">MOST POPULAR HASHTAGS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'top_like_tags:contact' %}">CONTACT</a>
+                    </li>
+                </ul><br>
+            </div>
+        </div>
+    </nav>
     <br><Br><br>
             <div class="container mx-auto text-center">
                 <h1>#TopLikeTags</h1>
@@ -19,24 +266,9 @@
                 <p style="color: grey; font-weight: 900;">For Instagram, it only allows up to 30 hashtags per post.</p><br>
                 <div class="text-left mx-auto col-md-8">
                     <b>Most Popular</b>
-                    <textarea rows="4" class="form-control">#love #TagsForLikes #TagsForLikesApp #TFLers #tweegram #photooftheday #20likes #amazing #smile #follow4follow #like4like #look #instalike #igers #picoftheday #food #instadaily #instafollow #followme #girl #iphoneonly #instagood #bestoftheday #instacool #instago #all_shots #follow #webstagram #colorful #style #swag
+                    <textarea rows="4" id="bar2" class="form-control">#love #TagsForLikes #TagsForLikesApp #TFLers #tweegram #photooftheday #20likes #amazing #smile #follow4follow #like4like #look #instalike #igers #picoftheday #food #instadaily #instafollow #followme #girl #iphoneonly #instagood #bestoftheday #instacool #instago #all_shots #follow #webstagram #colorful #style #swag
                     </textarea>
-                </div><bR><Br>
-                <div class="col-md-5 mx-auto text-center ads" style="z-index: 4;">
-                    <!--<h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>-->
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- toplikesocial -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3557075530543855"
-     data-ad-slot="5030182906"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-                </div>
+                </div><bR>
                 <br><Br>
 
     {% if fixed_hash %}
@@ -78,23 +310,7 @@
         {% endfor %}
     {% endif %}
             </div>
-    <br><Br><br>
-    <div class="col-md-10 mx-auto text-center ads" style="z-index: 4;">
-        <!--<h1 style="border-radius: 10px; padding: 20px; border: 2px solid black;">Space for ads...</h1>-->
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- toplikesocial -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3557075530543855"
-     data-ad-slot="5030182906"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-    </div>
-    <hr>
+    <br><Br>
     <div class="social_icons">
 
     </div>
@@ -130,4 +346,13 @@
                     </div>
                 </div>
             </div>
-{% endblock %}
+            <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    var clipboard = new ClipboardJS('.btn');
+                    AOS.init();
+                });
+            </script>
+        </body>
+        </html>
