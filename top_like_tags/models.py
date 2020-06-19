@@ -21,3 +21,11 @@ class fixed_hashtag(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class analytics(models.Model):
+    home_page = models.IntegerField()
+    popular_hashtag = models.IntegerField()
+    forums = models.IntegerField()
+    full_blog = models.IntegerField()
+    contact = models.IntegerField()

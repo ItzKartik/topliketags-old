@@ -4,8 +4,11 @@ from django.views.generic import TemplateView
 from top_like_tags import views
 from django.conf.urls.static import static
 from django.conf import settings
+from top_like_tags import models
+
 
 app_name = 'top_like_tags'
+
 
 urlpatterns = [
     path('', views.index, name='index'),

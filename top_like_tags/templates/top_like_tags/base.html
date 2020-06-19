@@ -16,13 +16,60 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open Sans|Playfair Display|Work Sans|Cormorant Garamond|Lora|Lobster|Josefin Sans|Roboto|Dancing Script|Abril Fatface|&display=swap" rel="stylesheet">
-
+<script data-ad-client="ca-pub-3557075530543855" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <style>
         body{
             font-family: 'Josefin Sans';
         }
         @media(max-width: 1100px){
 
+        }
+        @media(max-width: 650px){
+            .ftxt{
+                display: none !important;
+            }
+            .ftxt_show{
+                display: block !important;
+            }
+            .wp{
+                 height: 200px !important;
+            }
+            .navbar-img{
+                text-align: center !important;
+                width: 50% !important;
+            }
+            .navbar-toggler{
+                position: absolute;
+            }
+            .navbar-collapse{
+                text-align: right;
+            }
+            .navbar{
+                height: auto !important;
+            }
+            .main_tab{
+                margin: 10px 0px 0px 0px !important;
+            }
+            .main_part, .overlay{
+                height: 500px;
+            }
+        }
+        a{
+            text-decoration: none;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        .nav_id{
+            font-weight: 700;
+            font-size: 1rem;
+            {#color: #4b4b4b;#}
+            color: white;
+        }
+        .nav_id:hover{
+            text-decoration: none !important;
+            transition: ease 0.5s;
+            color: #00e1ff !important;
         }
         @media(max-width: 770px){
             .ftxt{
@@ -50,31 +97,17 @@
             .main_tab{
                 margin: 10px 0px 0px 0px !important;
             }
-            .main_part, .overlay{
-                height: 650px !important;
+            .main_part{
+                height: 450px !important;
             }
-        }
-        a{
-            text-decoration: none;
-        }
-        html{
-            scroll-behavior: smooth;
-        }
-        .nav_id{
-            font-weight: 700;
-            font-size: 1rem;
-            {#color: #4b4b4b;#}
-            color: white;
-        }
-        .nav_id:hover{
-            text-decoration: none !important;
-            transition: ease 0.5s;
-            color: #00e1ff !important;
+            .overlay{
+                height: 450px !important;
+            }
         }
         div.main_part{
             z-index: 2;
             width: 100%;
-            height: 750px;
+            height: 600px;
             position: absolute;
             box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
             background: url("{% static 'bg.jpg' %}");
@@ -89,7 +122,7 @@
          div.overlay{
             z-index: 3;
             width: 100%;
-            height: 750px;
+            height: 600px;
             position: absolute;
             box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
             border-radius: 5px;
@@ -181,8 +214,6 @@
     </style>
 </head>
 <body>
-<div class="overlay"></div>
-<div class="main_part"></div>
 <script>
 </script>
 <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light" style="
@@ -216,6 +247,8 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
         </div>
     </div>
 </nav>
+<div class="overlay"></div>
+<div class="main_part"></div>
 {% block base %}
 {% endblock %}
 <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>

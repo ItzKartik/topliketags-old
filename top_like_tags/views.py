@@ -4,7 +4,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from .models import blog_posts, fixed_hashtag
+from .models import blog_posts, fixed_hashtag, analytics
 from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -14,6 +14,9 @@ from django.views.generic.base import View
 
 
 def index(request):
+    a = analytics.objects.get(id=1)
+    a.home_page = a.home_page+1
+    a.save()
     model = blog_posts.objects.all()
     if len(model) < 4:
         pass
@@ -23,16 +26,25 @@ def index(request):
 
 
 def fixed(request):
+    a = analytics.objects.get(id=1)
+    a.popular_hashtag = a.popular_hashtag+1
+    a.save()
     model = fixed_hashtag.objects.all()
     return render(request, 'top_like_tags/fixed_hashtag.html', {'fixed_hash': model})
 
 
 def full_blog(request, blog_id):
+    a = analytics.objects.get(id=1)
+    a.full_blog = a.full_blog+1
+    a.save()
     model = blog_posts.objects.get(blogurl=blog_id)
     return render(request, 'top_like_tags/full_blog.html', {'blog': model})
 
 
 def forums(request):
+    a = analytics.objects.get(id=1)
+    a.forums = a.forums+1
+    a.save()
     model = blog_posts.objects.all()
     return render(request, 'top_like_tags/forums.html', {'blog': model})
 
@@ -118,4 +130,7 @@ def contact(request):
         smtp_server.close()
         return redirect('top_like_tags:index')
     else:
+        a = analytics.objects.get(id=1)
+        a.contact = a.contact+1
+        a.save()
         return render(request, 'top_like_tags/contact.html')
