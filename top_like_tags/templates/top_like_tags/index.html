@@ -446,19 +446,7 @@ $('.main_form').submit(function (e) {
                 $('.main_form')[0].reset();
                 $('.hashtags').html('');
                 $('.hash').show();
-                var d = JSON.parse(data);
-                if ($('#random').val() == 1) {
-                    for (var i = 0; i < d.length; i) {
-                        var r = Math.floor(Math.random() * d.length);
-                        $('.hashtags').append('#' + d[r] + ' ').fadeIn("slow");
-                        d.splice(r, 1);
-                    }
-                }
-                else{
-                    for (i=0; i < d.length; i++){
-                        $('.hashtags').append('#'+d[i]+' ').fadeIn("slow");
-                    }
-                }
+                $('.hashtags').append(data)
                 var clipboard = new ClipboardJS('.btn');
                 window.scrollTo(0,500);
             },
