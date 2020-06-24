@@ -5,10 +5,10 @@ from selenium.common.exceptions import NoSuchElementException, ElementClickInter
 from webdriver_manager.chrome import ChromeDriverManager
 
 chromeOptions = Options()
-# chromeOptions.add_argument("--headless")
-# chromeOptions.add_argument('--disable-gpu')
-# chromeOptions.add_argument("--disable-dev-sha-usage")
-# chromeOptions.add_argument("--no-sandbox")
+chromeOptions.add_argument("--headless")
+chromeOptions.add_argument('--disable-gpu')
+chromeOptions.add_argument("--disable-dev-sha-usage")
+chromeOptions.add_argument("--no-sandbox")
 
 drivers = []
 def insta_login():    

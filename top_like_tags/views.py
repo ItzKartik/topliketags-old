@@ -12,8 +12,20 @@ from django.shortcuts import render, redirect
 from bs4 import BeautifulSoup
 import requests
 from django.views.generic.base import View
-from top_like_tags.insta_login import insta_login
 
+from selenium import webdriver
+from time import sleep
+from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.ui import WebDriverWait 
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import ui
+from selenium.webdriver.common.by import By
+from django.http import HttpResponse
+from top_like_tags.insta_login import insta_login
 
 def about(request):
     m = models.about.objects.get(id=1)
@@ -78,16 +90,19 @@ import random
 def generator(request):
     hashtag = request.POST['keyword']
     random = request.POST['random']
-    hashtag = 'pubg'
     if '#' in hashtag:
         pass
     else:
         hashtag = '#'+hashtag
     d = insta_login()
     d = d[0]
+
     ctextarea = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.XPATH, 
     '//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')))
+    ctextarea = d.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')
+    ctextarea.clear()
     ActionChains(d).move_to_element(ctextarea).click(ctextarea).send_keys(hashtag).perform()
+
     sleep(4)
     fetched_hashtags = []
     elems = d.find_elements_by_xpath('//span')
@@ -99,7 +114,7 @@ def generator(request):
         if i == '':
             pass
         elif '#' in i:
-            hashtags.append(i)
+            hashtags.append(i+' ')
         else:
             pass
     if random == 1:
