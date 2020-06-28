@@ -9,8 +9,6 @@ from top_like_tags import models
 from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from bs4 import BeautifulSoup
-import requests
 from django.views.generic.base import View
 
 from selenium import webdriver
@@ -121,7 +119,12 @@ def generator(request):
         random.shuffle(hashtags)
     else:
         pass
-    return HttpResponse(hashtags)
+    h = []
+    if len(hashtags) > 30:
+        h = hashtags[:30]
+    else:
+        h = hashtags
+    return HttpResponse(h)
 
 def contact(request):
     if request.method == 'POST':
