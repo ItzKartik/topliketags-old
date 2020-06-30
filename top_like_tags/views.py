@@ -84,47 +84,103 @@ def forums(request):
     }
     return render(request, 'top_like_tags/forums.html', data)
 
-import random
-def generator(request):
-    hashtag = request.POST['keyword']
-    random = request.POST['random']
-    if '#' in hashtag:
-        pass
-    else:
-        hashtag = '#'+hashtag
-    d = insta_login()
-    d = d[0]
-
-    ctextarea = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.XPATH, 
-    '//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')))
-    ctextarea = d.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')
-    ctextarea.clear()
-    ActionChains(d).move_to_element(ctextarea).click(ctextarea).send_keys(hashtag).perform()
-
-    sleep(4)
-    fetched_hashtags = []
-    elems = d.find_elements_by_xpath('//span')
-    for elem in elems:
-        fetched_hashtags.append(elem.get_attribute("innerHTML"))
-    hashtaglist = fetched_hashtags[:len(fetched_hashtags)-2]
-    hashtags = []
-    for i in hashtaglist:
-        if i == '':
-            pass
-        elif '#' in i:
-            hashtags.append(i+' ')
+import requests
+class generator(View):
+    def post(self, *args, **kwargs):
+        d = insta_login()
+        d = d[0]
+        hashtag = self.request.POST['keyword']
+        random_text = self.request.POST['random']
+        min_posts = None
+        max_posts = None
+        search_url = 'https://www.instagram.com/web/search/topsearch/'
+        explore_headers = {'Host': 'www.instagram.com',
+                                'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0',
+                                'Accept': '*/*',
+                                'Accept-Language': 'en-US;q=0.7,en;q=0.3',
+                                'Accept-Encoding': 'gzip, deflate, br',
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'Referer': 'https://www.instagram.com/',
+                                'Connection': 'keep-alive'}
+        if hashtag[0] != '#':
+            hashtag = '#' + hashtag
+        params = {'context': 'blended',
+                  'query': hashtag,
+                  'rank_token': random.uniform(0, 1)}
+        response = self.get_request(search_url, params=params, headers=explore_headers)
+        tag_list = response.json()['hashtags']
+        tags = []
+        for tag in tag_list:
+            if min_posts:
+                if tag['hashtag']['media_count'] < min_posts:
+                    continue
+            if max_posts:
+                if tag['hashtag']['media_count'] > max_posts:
+                    continue
+            tags.append(tag['hashtag']['name'])
+        if int(random_text) == 1:
+            tag = tags[30:]
+        elif len(tags) > 30:
+            tag = tags[:30]
+        elif len(tags) <= 30:
+            tag = tags
         else:
-            pass
-    if random == 1:
-        random.shuffle(hashtags)
-    else:
-        pass
-    h = []
-    if len(hashtags) > 30:
-        h = hashtags[:30]
-    else:
-        h = hashtags
-    return HttpResponse(h)
+            tag = tags
+        return HttpResponse(json.dumps(tag))
+
+    def get_request(self, url, params=None, **kwargs):
+        """Make a GET request"""
+        self.s = requests.Session()
+        request = self.s.get(url, params=params, **kwargs)
+        return self.analyze_request(request)
+
+    def analyze_request(self, request):
+        """Check if the request was successful"""
+        if request.status_code == 200:
+            return request
+        else:
+            raise requests.HTTPError(str(request.status_code))
+
+# def generator(request):
+#     hashtag = request.POST['keyword']
+#     random = request.POST['random']
+#     if '#' in hashtag:
+#         pass
+#     else:
+#         hashtag = '#'+hashtag
+#     d = insta_login()
+#     d = d[0]
+
+#     ctextarea = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.XPATH, 
+#     '//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')))
+#     ctextarea = d.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')
+#     ctextarea.clear()
+#     ActionChains(d).move_to_element(ctextarea).click(ctextarea).send_keys(hashtag).perform()
+
+#     sleep(4)
+#     fetched_hashtags = []
+#     elems = d.find_elements_by_xpath('//span')
+#     for elem in elems:
+#         fetched_hashtags.append(elem.get_attribute("innerHTML"))
+#     hashtaglist = fetched_hashtags[:len(fetched_hashtags)-2]
+#     hashtags = []
+#     for i in hashtaglist:
+#         if i == '':
+#             pass
+#         elif '#' in i:
+#             hashtags.append(i+' ')
+#         else:
+#             pass
+#     if random == 1:
+#         random.shuffle(hashtags)
+#     else:
+#         pass
+#     h = []
+#     if len(hashtags) > 30:
+#         h = hashtags[:30]
+#     else:
+#         h = hashtags
+#     return HttpResponse(h)
 
 def contact(request):
     if request.method == 'POST':

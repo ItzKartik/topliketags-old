@@ -20,8 +20,8 @@ def insta_login():
         drivers.append(x)
         x.get("https://instagram.com")
         sleep(2)
-        x.find_element_by_name("username").send_keys("3aceboyz")
-        x.find_element_by_name("password").send_keys("Kartik@777")
+        x.find_element_by_name("username").send_keys("topliketagsbot")
+        x.find_element_by_name("password").send_keys("tomtom852")
         sleep(2)
         try:
             x.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[4]/button').click()

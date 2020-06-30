@@ -446,7 +446,20 @@ $('.main_form').submit(function (e) {
                 $('.main_form')[0].reset();
                 $('.hashtags').html('');
                 $('.hash').show();
-                $('.hashtags').append(data)
+                // $('.hashtags').append(data)
+                var d = JSON.parse(data);
+                if ($('#random').val() == 1) {
+                    for (var i = 0; i < d.length; i) {
+                        var r = Math.floor(Math.random() * d.length);
+                        $('.hashtags').append('#' + d[r] + ' ').fadeIn("slow");
+                        d.splice(r, 1);
+                    }
+                }
+                else{
+                    for (i=0; i < d.length; i++){
+                        $('.hashtags').append('#'+d[i]+' ').fadeIn("slow");
+                    }
+                }
                 var clipboard = new ClipboardJS('.btn');
                 window.scrollTo(0,500);
             },
