@@ -18,7 +18,7 @@ urlpatterns = [
     path('policy/', views.policy, name='policy'),
     path('contact/', views.contact, name='contact'),
     re_path('blog/(?P<blog_id>[\w-]+)', views.full_blog, name='full_blog'),
-    path('generator/', views.generator.as_view(), name='generator'),
+    # path('generator/', views.generator.as_view(), name='generator'),
     path('generator/', views.generator, name='generator'),
 ]
 if settings.DEBUG:
