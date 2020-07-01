@@ -95,7 +95,7 @@ class generator(View):
         max_posts = None
         search_url = 'https://www.instagram.com/web/search/topsearch/'
         explore_headers = {'Host': 'www.instagram.com',
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0',
+                                'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Mobile Safari/537.36',
                                 'Accept': '*/*',
                                 'Accept-Language': 'en-US;q=0.7,en;q=0.3',
                                 'Accept-Encoding': 'gzip, deflate, br',
