@@ -446,18 +446,13 @@ $('.main_form').submit(function (e) {
                 $('.main_form')[0].reset();
                 $('.hashtags').html('');
                 $('.hash').show();
-                // $('.hashtags').append(data)
-                var d = JSON.parse(data);
-                if ($('#random').val() == 1) {
-                    for (var i = 0; i < d.length; i) {
-                        var r = Math.floor(Math.random() * d.length);
-                        $('.hashtags').append('#' + d[r] + ' ').fadeIn("slow");
-                        d.splice(r, 1);
+                var d = data.split('#');
+                for (i=0; i < 31; i++){
+                    if (d[i] == ''){
+
                     }
-                }
-                else{
-                    for (i=0; i < d.length; i++){
-                        $('.hashtags').append('#'+d[i]+' ').fadeIn("slow");
+                    else{
+                        $('.hashtags').append('#'+d[i]+' ').fadeIn();
                     }
                 }
                 var clipboard = new ClipboardJS('.btn');

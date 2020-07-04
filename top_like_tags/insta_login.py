@@ -18,19 +18,13 @@ def insta_login():
     else:   
         print("Started")
         x = webdriver.Chrome(ChromeDriverManager().install(), options=chromeOptions)
-        print("start")
         x.set_window_size(1366, 768)  
-        print("set_window_size")
         drivers.append(x)
-        print("appending")
         x.get("https://www.instagram.com/accounts/login/")
-        print("url")
         sleep(2)
-        print("on url")
         x.find_element_by_name("username").send_keys("topliketagsbot")
         x.find_element_by_name("password").send_keys("tomtom852")
         sleep(2)
-        print("keys send")
         try:
             x.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[4]/button').click()
         except NoSuchElementException:
