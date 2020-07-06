@@ -447,12 +447,24 @@ $('.main_form').submit(function (e) {
                 $('.hashtags').html('');
                 $('.hash').show();
                 var d = data.split('#');
-                for (i=0; i < 31; i++){
-                    if (d[i] == ''){
+                if (d.length > 32){
+                    for (i=0; i < 31; i++){
+                        if (d[i] == ''){
 
+                        }
+                        else{
+                            $('.hashtags').append('#'+d[i]+' ').fadeIn();
+                        }
                     }
-                    else{
-                        $('.hashtags').append('#'+d[i]+' ').fadeIn();
+                }
+                else{
+                    for (i=0; i < d.length; i++){
+                        if (d[i] == ''){
+
+                        }
+                        else{
+                            $('.hashtags').append('#'+d[i]+' ').fadeIn();
+                        }
                     }
                 }
                 var clipboard = new ClipboardJS('.btn');

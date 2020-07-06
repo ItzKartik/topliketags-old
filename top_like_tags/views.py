@@ -109,7 +109,7 @@ def generator(request):
     for i in fetched_hashtags:
         if i == '':
             pass
-        elif '#' in i:
+        elif hashtag in i:
             hashtags.append(i+' ')
         else:
             pass
