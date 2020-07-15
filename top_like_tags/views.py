@@ -97,9 +97,8 @@ def generator(request):
         pass
     else:
         hashtag = '#'+hashtag
-    return HttpResponse(hashtag)
-    # d = insta_login()
-    # d = d[0]
+    d = insta_login()
+    d = d[0]
 
     ctextarea = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.XPATH, 
     '//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')))
