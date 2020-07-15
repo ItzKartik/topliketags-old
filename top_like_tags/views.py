@@ -87,7 +87,7 @@ def forums(request):
 
 def generator(request):
     hashtag = request.POST['keyword']
-    random = request.POST['random']
+    random_data = request.POST['random']
     if ' ' in hashtag:
         h = hashtag.split(' ')
         hashtag = "".join([i for i in h])
@@ -97,6 +97,7 @@ def generator(request):
         pass
     else:
         hashtag = '#'+hashtag
+
     d = insta_login()
     d = d[0]
 
@@ -118,10 +119,11 @@ def generator(request):
             hashtags.append(i+' ')
         else:
             pass
-    if random == 1:
-        random.shuffle(hashtags)
-    else:
-        pass
+    if hashtags != []:
+        if int(random_data) == 1:
+            return HttpResponse(random.sample(hashtags, 30))
+        else:
+            pass
     return HttpResponse(hashtags)
 
 def contact(request):

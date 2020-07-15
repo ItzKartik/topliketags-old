@@ -138,7 +138,9 @@
                 color: white;
             }
             .nav-link{
-                color: black !important;
+                /* color: black !important; */
+                color: white !important;
+                font-weight: 900 !important;
             }
             .nav-link:hover{
                 transition: ease 0.5s;
@@ -217,14 +219,14 @@
     <style>
         .fc{
             background: transparent;
-            color: white;
+            color: rgb(0, 0, 0);
             border: 2px solid #17d9db;
             height: 50px;
             padding: 20px;
             border-radius: 50px;
         }
         .fc::placeholder{
-            color: white;
+            color: rgb(0, 0, 0);
         }
     .btn, .btn:hover{
         border-radius: 50px;
@@ -235,11 +237,25 @@
     .fas{
         color: #f9333f;
     }
-
+    .progress{
+        height: 30px;
+        border-radius: 50px;
+        background-color: rgba(225, 225, 225, 0.5);
+    }
+    .progress-bar{
+        padding: 20px 0px;
+        background-color: #ff253a;
+    }
+    .progress-bar h3{
+        font-size: 1.3rem;
+        color: white;
+        font-weight: 700;
+        font-family: "Josefin Sans";
+    }
     </style>
     <body>
         <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light" style="
-border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: none; z-index: 4; background: white !important;">
+border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: none; z-index: 4; background: #00e1ff !important;">
     <div class="container mx-auto text-center">
         <button class="navbar-toggler"
                 type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -247,7 +263,7 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
         </button><br>
         <div onclick="window.location.replace('{% url 'top_like_tags:index' %}');"
              class="mx-auto navbar-img text-center" style="width: 200px; padding: 20px;">
-            <img alt="topliketags logo" class="mx-auto text-center" style="display: block; max-width: 100%; height: auto;" src="{% static 'logo1.png' %}"></div>
+            <img alt="topliketags logo" class="mx-auto text-center" style="display: block; max-width: 100%; height: auto;" src="{% static 'topliketags_white.png' %}"></div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -267,23 +283,20 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
                 </li>
             </ul><br>
         </div>
-    </div>
+    </div> 
 </nav>
-<div class="overlay"></div>
-<div class="main_part"></div>
+<!-- <div class="overlay"></div> -->
+<!-- <div class="main_part"></div> -->
     <div class="col-md-12">
         <!--TopPart-->
-        <div class="container mx-auto text-center" style="color: white; z-index: 4; padding: 20px;"><br>
-            <!--<div class="col-md-8 mx-auto text-center" style="z-index: 4;">
-                <h1 style="border-radius: 10px; padding: 20px; border: 2px solid white;">Space for ads...</h1>
-            </div>-->
-            <div class="col-md-12 main_tab mx-auto text-center" style="margin: 120px 0px 0px 0px; z-index: 4;">
-                <h3 style="">FREE HASHTAGS GENERATOR – Find Your Trending Hashtags</h3>
+        <div class="container mx-auto text-center" style="color: rgb(0, 0, 0); z-index: 4; padding: 20px;"><br>
+            <div class="col-md-12 main_tab mx-auto text-center" style="margin: 80px 0px 0px 0px; z-index: 4;">
+                <h1 style="">GENUINE HASHTAG GENERATOR<br><h3>Find Your Top Instagram Trending Hashtags</h3></h1>
             </div>
         </div>
         <!--WorkingPart-->
-        <div class="container wp mx-auto text-center" style="color: white; height: 300px;">
-            <div class="col-md-5 text-center mx-auto" style="z-index: 4;">
+        <div class="container wp mx-auto text-center" style="color: rgb(0, 0, 0); height: 400px;">
+            <div class="col-md-5 text-center mx-auto first-hashtag" style="z-index: 4;">
                 <form method="post" class="main_form mx-auto text-center">{% csrf_token %}
                     <div class="form-group">
                         <label for="keyword_field"></label>
@@ -304,15 +317,31 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
                     <button class="btn btn-primary text-center">Generate Hashtag</button>
                 </form>
             </div>
-        </div><br><br><br><br><br><br>
-        <div class="col-md-6 mx-auto text-left hash" style="z-index: 4; padding: 20px 20px 20px 20px; display: none;">
-            <div style="color: black;">
-                <textarea rows="7" style="border-radius: 10px;" id="bar" class="hashtags form-control"></textarea>
-            </div><br>
-            <div class="mx-auto text-center">
-                <button data-clipboard-target="#bar" onclick="alert('Copied! You can now paste them :)');" style="background: transparent; color: black;" class="btn btn-primary">Copy</button>
+            <div class="col-sm-12 progress-hashtag" style="left: 0; display:none; margin-top: 80px;">
+                <h1 class="updated_hashtag"></h1>
+                <div class="col-md-6 mx-auto text-center" style="padding: 40px;">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" id="myBar" role="progressbar"
+                        aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <h3 class="progress-count"></h3>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div><br><br><br>
+            <div class="col-sm-12 wantmore-hashtag" style="left: 0; display: none;  margin-top: 80px;">
+                <div class="col-md-7 mx-auto text-center" style="padding: 40px;">
+                    <div class="mx-auto text-left" style="z-index: 4;">
+                        <div style="color: black;">
+                            <textarea rows="7" style="border-radius: 10px;" id="bar" class="hashtags form-control"></textarea>
+                        </div><br>
+                        <div class="mx-auto text-center">
+                            <button data-clipboard-target="#bar" onclick="alert('Copied! You can now paste them :)');" class="btn btn-primary">Copy</button>
+                            <button data-clipboard-target="#bar" onclick="window.location.replace('');" class="btn btn-primary">Go Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--Blogs-->
         <div class="col-md-12 mx-auto text-center">
             <div class="row mx-auto text-left">
@@ -434,6 +463,10 @@ $('.main_form').submit(function (e) {
     e.preventDefault();
     if ($('.form-check-input').is(':checked')){
         $('.error_txt').html('');
+        $('.main_tab').fadeOut();
+        container_works(first_hashtag, progress_part);
+        move();
+        var updating = setInterval(changeText, 1000);
         $.ajax({
             url: "{% url 'top_like_tags:generator' %}",
             type: 'POST',
@@ -467,11 +500,13 @@ $('.main_form').submit(function (e) {
                         }
                     }
                 }
+                container_works(progress_part, more_part);
                 var clipboard = new ClipboardJS('.btn');
-                window.scrollTo(0,500);
             },
             error: function (error) {
-                console.log(error)
+                console.log(error);
+                container_works(progress_part, first-hashtag);
+                $('.error_txt').append('<p class="mx-auto text-center" style="color: #f9333f;">Please Select One CheckBox To Start</p>');        
             }
         });
     }else{
@@ -493,5 +528,55 @@ function check_it(ele){
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
     AOS.init();
+</script>
+
+<script>
+    function container_works(first_con, second_con) {
+        first_con.fadeOut();
+        second_con.fadeIn();
+    }
+    function changeText() {
+        if (parseInt(count) == 3) {
+            clearInterval(updating);
+        }
+        else {
+            $('.updated_text').fadeOut('slow');
+            $(".updated_hashtag").html('<h3 class="updated_text" style="color: #17d9db; font-weight: 700;">' + text[count] + '</h3>');
+            setTimeout(function () {
+                count < 3 ? count++ : count = 0;
+            }, 500);
+        }
+    }
+    function move() {
+        if (i == 0) {
+            i = 1;
+            var elem = document.getElementById("myBar");
+            var count = $(".progress-count");
+            var width = 0;
+            var id = setInterval(frame, 200);
+            function frame() {
+                if (width >= 100) {
+                    count.html('');
+                    count.html(width + "%");
+                    clearInterval(id);
+                    i = 0;
+                } else {
+                    count.html('');
+                    count.html(width + "%");
+                    width = parseInt(width) + 4;
+                    elem.style.width = width + "%";
+                }
+            }
+        }
+    }
+    var count = 0;
+    var i = 0;
+    var t = 0;
+    var first_hashtag = $('.first-hashtag');
+    var progress_part = $('.progress-hashtag');
+    var more_part = $('.wantmore-hashtag');
+    var ad_part = $('.ad-part');
+    var updating = '';
+    let text = ['Reached', 'Hashtag Fetched', 'Done'];
 </script>
 </body> </html>
