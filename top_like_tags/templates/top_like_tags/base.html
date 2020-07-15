@@ -141,11 +141,12 @@
             color: white;
         }
         .nav-link{
-            color: black !important;
+            color: white !important;
+                font-weight: 900 !important;
         }
         .nav-link:hover{
             transition: ease 0.5s;
-            color: #00e1ff !important;
+            color: #000000 !important;
         }
         .navbar-toggler {
             border: none !important;
@@ -220,15 +221,15 @@
 <script>
 </script>
 <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light" style="
-border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: none; z-index: 4; background: white !important;">
+border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: none; z-index: 4; background: #17d9db !important;">
     <div class="container mx-auto text-center">
         <button class="navbar-toggler"
                 type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button><br>
         <div onclick="window.location.replace('{% url 'top_like_tags:index' %}');"
-             class="mx-auto navbar-img text-center" style="width: 200px; padding: 20px;">
-            <img alt="topliketags logo" class="mx-auto text-center" style="display: block; max-width: 100%; height: auto;" src="{% static 'logo1.png' %}"></div>
+             class="mx-auto navbar-img text-center" style="width: 300px; padding: 20px;">
+            <img alt="topliketags logo" class="mx-auto text-center" style="display: block; max-width: 100%; height: auto;" src="{% static 'horlogo.png' %}"></div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">

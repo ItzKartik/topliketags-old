@@ -27,16 +27,16 @@ from django.http import HttpResponse
 from top_like_tags.insta_login import insta_login
 
 def about(request):
-    m = models.about.objects.get(id=1)
+    m = models.about.objects.all().first()
     return render(request, 'top_like_tags/about.html', {'seo': m})
 
 def policy(request):
-    m = models.policy.objects.get(id=1)
-    return render(request, 'top_like_tags/about.html', {'seo': m})
+    m = models.policy_page.objects.all().first()
+    return render(request, 'top_like_tags/policy.html', {'seo': m})
 
 def index(request):
-    m = models.home.objects.get(id=1)
-    a = analytics.objects.get(id=1)
+    m = models.home.objects.all().first()
+    a = analytics.objects.all().first()
     a.home_page = a.home_page+1
     a.save()
     model = blog_posts.objects.all()
@@ -52,8 +52,8 @@ def index(request):
 
 
 def fixed(request):
-    m = models.fixed_hashtag.objects.get(id=1)
-    a = analytics.objects.get(id=1)
+    m = models.fixed_hashtag.objects.all().first()
+    a = analytics.objects.all().first()
     a.popular_hashtag = a.popular_hashtag+1
     a.save()
     model = fixed_hashtag.objects.all()
@@ -65,7 +65,7 @@ def fixed(request):
 
 
 def full_blog(request, blog_id):
-    a = analytics.objects.get(id=1)
+    a = analytics.objects.all().first()
     a.full_blog = a.full_blog+1
     a.save()
     model = blog_posts.objects.get(blogurl=blog_id)
@@ -73,9 +73,9 @@ def full_blog(request, blog_id):
 
 
 def forums(request):
-    m = models.hashtag_tips.objects.get(id=1)
+    m = models.hashtag_tips.objects.all().first()
 
-    a = analytics.objects.get(id=1)
+    a = analytics.objects.all().first()
     a.forums = a.forums+1
     a.save()
     model = blog_posts.objects.all()
@@ -152,9 +152,9 @@ def contact(request):
         smtp_server.close()
         return redirect('top_like_tags:index')
     else:
-        m = models.contact_page.objects.get(id=1)
+        m = models.contact_page.objects.all().first()
         
-        a = analytics.objects.get(id=1)
+        a = analytics.objects.all().first()
         a.contact = a.contact+1
         a.save()
         data = {
