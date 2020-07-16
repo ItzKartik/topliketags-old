@@ -28,36 +28,6 @@
             @media(max-width: 1100px){
     
             }
-            @media(max-width: 650px){
-                .ftxt{
-                    display: none !important;
-                }
-                .ftxt_show{
-                    display: block !important;
-                }
-                .wp{
-                     height: 200px !important;
-                }
-                .navbar-img{
-                    text-align: center !important;
-                    width: 50% !important;
-                }
-                .navbar-toggler{
-                    position: absolute;
-                }
-                .navbar-collapse{
-                    text-align: right;
-                }
-                .navbar{
-                    height: auto !important;
-                }
-                .main_tab{
-                    margin: 10px 0px 0px 0px !important;
-                }
-                .main_part, .overlay{
-                    height: 500px;
-                }
-            }
             a{
                 text-decoration: none;
             }
@@ -86,7 +56,7 @@
                 }
                 .navbar-img{
                     text-align: center !important;
-                    width: 50% !important;
+                    width: 70% !important;
                 }
                 .navbar-toggler{
                     position: absolute;
@@ -105,6 +75,36 @@
                 }
                 .overlay{
                     height: 450px !important;
+                }
+            }
+            @media(max-width: 650px){
+                .ftxt{
+                    display: none !important;
+                }
+                .ftxt_show{
+                    display: block !important;
+                }
+                .wp{
+                     height: 200px !important;
+                }
+                .navbar-img{
+                    text-align: center !important;
+                    width: 70% !important;
+                }
+                .navbar-toggler{
+                    position: absolute;
+                }
+                .navbar-collapse{
+                    text-align: right;
+                }
+                .navbar{
+                    height: auto !important;
+                }
+                .main_tab{
+                    margin: 10px 0px 0px 0px !important;
+                }
+                .main_part, .overlay{
+                    height: 500px;
                 }
             }
             div.main_part{
@@ -297,7 +297,7 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
             </div>
         </div>
         <!--WorkingPart-->
-        <div class="container wp mx-auto text-center" style="color: rgb(0, 0, 0); height: 400px;">
+        <div class="container wp mx-auto text-center" style="color: rgb(0, 0, 0); height: auto; margin: 0px 0px 100px 0px;">
             <div class="col-md-5 text-center mx-auto first-hashtag" style="z-index: 4;">
                 <form method="post" class="main_form mx-auto text-center">{% csrf_token %}
                     <div class="form-group">
@@ -319,7 +319,7 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
                     <button class="btn btn-primary text-center">Generate Hashtag</button>
                 </form>
             </div>
-            <div class="col-sm-12 progress-hashtag" style="left: 0; display:none; margin-top: 80px;">
+            <div class="col-sm-12 progress-hashtag" style="left: 0; display:none; margin-top: 20px;">
                 <h1 class="updated_hashtag"></h1>
                 <div class="col-md-6 mx-auto text-center" style="padding: 40px;">
                     <div class="progress">
@@ -330,15 +330,15 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 wantmore-hashtag" style="left: 0; display: none;  margin-top: 80px;">
-                <div class="mx-auto text-center" style="padding: 40px;">
+            <div class="col-sm-12 wantmore-hashtag" style="left: 0; display: none; margin: 20px 0px 80px 0px">
+                <div class="mx-auto text-center" style="">
                     <div class="mx-auto text-left" style="z-index: 4;">
                         <div style="color: black;">
                             <textarea rows="7" style="border-radius: 10px;" id="bar" class="hashtags form-control"></textarea>
                         </div><br>
                         <div class="mx-auto text-center">
                             <button data-clipboard-target="#bar" onclick="alert('Copied! You can now paste them :)');" class="btn btn-primary">Copy</button>
-                            <button data-clipboard-target="#bar" onclick="container_works(more_part, first_hashtag);" class="btn btn-primary">Go Back</button>
+                            <button data-clipboard-target="#bar" onclick="container_works(more_part, first_hashtag);$('.main_tab').fadeIn();" class="btn btn-primary">Go Back</button>
                         </div>
                     </div>
                 </div>
@@ -548,6 +548,7 @@ function check_it(ele){
     function changeText() {
         if (parseInt(count) == 3) {
             clearInterval(updating);
+            count = 0;
         }
         else {
             $('.updated_text').fadeOut('slow');

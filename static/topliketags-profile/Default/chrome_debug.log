@@ -1,4 +1,7 @@
-[0716/042455.320438:ERROR:service_worker_storage.cc(1575)] Failed to delete the database: Database IO error
-[0716/042504.514579:ERROR:leveldb_factory.cc(90)] Failed to open LevelDB database from /opt/topliketags/static/topliketags-profile/Default/IndexedDB/https_www.instagram.com_0.indexeddb.leveldb,IO error: /opt/topliketags/static/topliketags-profile/Default/IndexedDB/https_www.instagram.com_0.indexeddb.leveldb/LOCK: File currently in use. (ChromeMethodBFE: 15::LockFile::2)
-[0716/042505.535713:ERROR:leveldb_factory.cc(90)] Failed to open LevelDB database from /opt/topliketags/static/topliketags-profile/Default/IndexedDB/https_www.instagram.com_0.indexeddb.leveldb,IO error: /opt/topliketags/static/topliketags-profile/Default/IndexedDB/https_www.instagram.com_0.indexeddb.leveldb/LOCK: File currently in use. (ChromeMethodBFE: 15::LockFile::2)
-[0716/042508.418852:INFO:CONSOLE(0)] "The resource https://www.instagram.com/graphql/query/?query_hash=7223fb3539e10cad7900c019401669e7&variables=%7B%22only_stories%22%3Atrue%2C%22stories_prefetch%22%3Atrue%2C%22stories_video_dash_manifest%22%3Afalse%7D was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", source:  (0)
+[0716/043505.756631:INFO:CONSOLE(0)] "The resource https://www.instagram.com/graphql/query/?query_hash=7223fb3539e10cad7900c019401669e7&variables=%7B%22only_stories%22%3Atrue%2C%22stories_prefetch%22%3Atrue%2C%22stories_video_dash_manifest%22%3Afalse%7D was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", source:  (0)
+[0716/043617.764055:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 39
+[0716/043849.952013:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 75
+[0716/043916.576385:WARNING:spdy_session.cc(3308)] Received WINDOW_UPDATE for invalid stream 87
+[0716/043925.320862:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 95
+[0716/044000.528535:WARNING:spdy_session.cc(3308)] Received WINDOW_UPDATE for invalid stream 101
+[0716/045317.889031:WARNING:spdy_session.cc(3308)] Received WINDOW_UPDATE for invalid stream 1
