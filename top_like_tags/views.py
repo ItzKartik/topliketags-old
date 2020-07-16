@@ -100,10 +100,11 @@ def generator(request):
 
     d = insta_login()
     d = d[0]
-
+    sleep(0.1)
     ctextarea = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.XPATH, 
     '//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')))
     ctextarea = d.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')
+    sleep(0.1)
     ctextarea.clear()
     ActionChains(d).move_to_element(ctextarea).click(ctextarea).send_keys(hashtag).perform()
 

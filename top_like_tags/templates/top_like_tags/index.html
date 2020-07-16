@@ -1,3 +1,4 @@
+
     {% load static %}
     <html>
     <head>
@@ -330,14 +331,14 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
                 </div>
             </div>
             <div class="col-sm-12 wantmore-hashtag" style="left: 0; display: none;  margin-top: 80px;">
-                <div class="col-md-7 mx-auto text-center" style="padding: 40px;">
+                <div class="mx-auto text-center" style="padding: 40px;">
                     <div class="mx-auto text-left" style="z-index: 4;">
                         <div style="color: black;">
                             <textarea rows="7" style="border-radius: 10px;" id="bar" class="hashtags form-control"></textarea>
                         </div><br>
                         <div class="mx-auto text-center">
                             <button data-clipboard-target="#bar" onclick="alert('Copied! You can now paste them :)');" class="btn btn-primary">Copy</button>
-                            <button data-clipboard-target="#bar" onclick="window.location.replace('');" class="btn btn-primary">Go Back</button>
+                            <button data-clipboard-target="#bar" onclick="container_works(more_part, first_hashtag);" class="btn btn-primary">Go Back</button>
                         </div>
                     </div>
                 </div>
@@ -467,12 +468,13 @@ $('.main_form').submit(function (e) {
         $('.main_tab').fadeOut();
         container_works(first_hashtag, progress_part);
         move();
+        var keyword = $('#keyword_field').val().toLowerCase();
         var updating = setInterval(changeText, 1000);
         $.ajax({
             url: "{% url 'top_like_tags:generator' %}",
             type: 'POST',
             data: {
-                keyword: $('#keyword_field').val(),
+                keyword: keyword,
                 random: $('#random').val(),
                 csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
             },
@@ -481,6 +483,11 @@ $('.main_form').submit(function (e) {
                 $('.hashtags').html('');
                 $('.hash').show();
                 var d = data.split('#');
+                if (data == ''){
+			container_works(progress_part, first_hashtag);
+			alert('Please Choose A Valid Keyword');
+		}
+		else{
                 if (d.length > 32){
                     for (i=0; i < 31; i++){
                         if (d[i] == ''){
@@ -501,12 +508,14 @@ $('.main_form').submit(function (e) {
                         }
                     }
                 }
-                container_works(progress_part, more_part);
+		container_works(progress_part, more_part);
                 var clipboard = new ClipboardJS('.btn');
+
+		}
             },
             error: function (error) {
                 console.log(error);
-                container_works(progress_part, first-hashtag);
+                container_works(progress_part, first_hashtag);
                 $('.error_txt').append('<p class="mx-auto text-center" style="color: #f9333f;">Please Select One CheckBox To Start</p>');        
             }
         });
@@ -561,6 +570,7 @@ function check_it(ele){
                     count.html(width + "%");
                     clearInterval(id);
                     i = 0;
+		    width = 0;
                 } else {
                     count.html('');
                     count.html(width + "%");

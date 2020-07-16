@@ -10,6 +10,7 @@ import os
 path_of_file = os.path.join(settings.BASE_DIR, 'static')
 
 chromeOptions = Options()
+chromeOptions.add_argument("enable-features=NetworkServiceInProcess")
 chromeOptions.add_argument("user-data-dir={}".format(path_of_file+'/topliketags-profile'))
 chromeOptions.add_argument("--headless")
 chromeOptions.add_argument('--disable-gpu')
