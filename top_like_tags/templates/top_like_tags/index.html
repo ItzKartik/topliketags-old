@@ -484,34 +484,14 @@ $('.main_form').submit(function (e) {
                 $('.hash').show();
                 var d = data.split('#');
                 if (data == ''){
-			container_works(progress_part, first_hashtag);
-			alert('Please Choose A Valid Keyword');
-		}
-		else{
-                if (d.length > 32){
-                    for (i=0; i < 31; i++){
-                        if (d[i] == ''){
-
-                        }
-                        else{
-                            $('.hashtags').append('#'+d[i]+' ').fadeIn();
-                        }
-                    }
+                    container_works(progress_part, first_hashtag);
+                    alert('Please Choose A Valid Keyword');
                 }
                 else{
-                    for (i=0; i < d.length; i++){
-                        if (d[i] == ''){
-
-                        }
-                        else{
-                            $('.hashtags').append('#'+d[i]+' ').fadeIn();
-                        }
-                    }
+                    $('.hashtags').append(data).fadeIn();
+                    container_works(progress_part, more_part);
+                    var clipboard = new ClipboardJS('.btn');
                 }
-		container_works(progress_part, more_part);
-                var clipboard = new ClipboardJS('.btn');
-
-		}
             },
             error: function (error) {
                 console.log(error);
@@ -546,16 +526,15 @@ function check_it(ele){
         second_con.fadeIn();
     }
     function changeText() {
-        if (parseInt(count) == 3) {
+        if (parseInt(count) == 1) {
             clearInterval(updating);
             count = 0;
         }
         else {
-            $('.updated_text').fadeOut('slow');
             $(".updated_hashtag").html('<h3 class="updated_text" style="color: #17d9db; font-weight: 700;">' + text[count] + '</h3>');
             setTimeout(function () {
-                count < 3 ? count++ : count = 0;
-            }, 500);
+                count < 1 ? count++ : count = 0;
+            }, 5);
         }
     }
     function move() {
@@ -564,7 +543,7 @@ function check_it(ele){
             var elem = document.getElementById("myBar");
             var count = $(".progress-count");
             var width = 0;
-            var id = setInterval(frame, 200);
+            var id = setInterval(frame, 10);
             function frame() {
                 if (width >= 100) {
                     count.html('');
@@ -589,6 +568,6 @@ function check_it(ele){
     var more_part = $('.wantmore-hashtag');
     var ad_part = $('.ad-part');
     var updating = '';
-    let text = ['Reached', 'Hashtag Fetched', 'Done'];
+    let text = ['Hashtag Fetched'];
 </script>
 </body> </html>

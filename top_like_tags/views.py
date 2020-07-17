@@ -1,5 +1,7 @@
+import browser_cookie3
 import requests
 import json
+import os
 import random
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -11,6 +13,9 @@ from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
+
+import os
+from django.conf import settings
 
 from selenium import webdriver
 from time import sleep
@@ -24,7 +29,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support import ui
 from selenium.webdriver.common.by import By
 from django.http import HttpResponse
-from top_like_tags.insta_login import insta_login
 
 def about(request):
     m = models.about.objects.all().first()
@@ -85,48 +89,6 @@ def forums(request):
     }
     return render(request, 'top_like_tags/forums.html', data)
 
-def generator(request):
-    hashtag = request.POST['keyword']
-    random_data = request.POST['random']
-    if ' ' in hashtag:
-        h = hashtag.split(' ')
-        hashtag = "".join([i for i in h])
-    else:
-        pass
-    if '#' in hashtag:
-        pass
-    else:
-        hashtag = '#'+hashtag
-
-    d = insta_login()
-    d = d[0]
-    sleep(0.1)
-    ctextarea = WebDriverWait(d, 20).until(EC.element_to_be_clickable((By.XPATH, 
-    '//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')))
-    ctextarea = d.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input')
-    sleep(0.1)
-    ctextarea.clear()
-    ActionChains(d).move_to_element(ctextarea).click(ctextarea).send_keys(hashtag).perform()
-
-    sleep(1)
-    fetched_hashtags = []
-    for elem in d.find_elements_by_xpath('.//span'):
-        fetched_hashtags.append(elem.get_attribute("innerHTML"))
-    hashtags = []
-    for i in fetched_hashtags:
-        if i == '':
-            pass
-        elif hashtag in i:
-            hashtags.append(i+' ')
-        else:
-            pass
-    if hashtags != []:
-        if int(random_data) == 1:
-            return HttpResponse(random.sample(hashtags, 30))
-        else:
-            pass
-    return HttpResponse(hashtags)
-
 def contact(request):
     if request.method == 'POST':
         name = request.POST['id_name']
@@ -162,3 +124,45 @@ def contact(request):
             'seo': m
         }
         return render(request, 'top_like_tags/contact.html')
+
+
+def generator(request):
+    path_of_file = os.path.join(settings.BASE_DIR, 'static')
+    full_path = path_of_file+'/topliketags-profile/Default/Cookies'
+    cookies = browser_cookie3.chrome(cookie_file=full_path)
+    hashtag = request.POST['keyword']
+    random_text = request.POST['random']
+    search_url = 'https://www.instagram.com/web/search/topsearch/'
+    explore_headers = {'Host': 'www.instagram.com',
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0',
+                        'Accept': '*/*',
+                        'Accept-Language': 'en-US;q=0.7,en;q=0.3',
+                        'Accept-Encoding': 'gzip, deflate, br',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Referer': 'https://www.instagram.com/',
+                        'Connection': 'keep-alive'}
+    if hashtag[0] != '#':
+        hashtag = '#' + hashtag
+        params = {'context': 'blended',
+            'query': hashtag,
+            'rank_token': random.uniform(0, 1)}
+
+    s = requests.Session()
+    request = s.get(search_url, params=params, verify=False, headers=explore_headers, cookies=cookies, timeout=3)
+    response = None
+    if request.status_code == 200:
+        response = request
+    else:
+        raise requests.HTTPError(str(request.status_code))
+    tag_list = response.json()['hashtags']
+    tags = []
+
+    for tag in tag_list:
+        if tag == '':
+            pass
+        else:
+            tags.append('#'+tag['hashtag']['name']+' ')
+    if int(random_text) == 1:
+        return HttpResponse(random.sample(tags, 30))
+    return HttpResponse(tags[30:])
+
