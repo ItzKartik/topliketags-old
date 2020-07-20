@@ -319,7 +319,7 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
                     <button class="btn btn-primary text-center">Generate Hashtag</button>
                 </form>
             </div>
-            <div class="col-sm-12 progress-hashtag" style="left: 0; display:none; margin-top: 20px;">
+            <div class="col-sm-12 progress-hashtag" style="left: 0; display:none; margin-top: 20px; margin-bottom: 30px;">
                 <h1 class="updated_hashtag"></h1>
                 <div class="col-md-6 mx-auto text-center" style="padding: 40px;">
                     <div class="progress">
@@ -492,6 +492,7 @@ $('.main_form').submit(function (e) {
                     container_works(progress_part, more_part);
                     var clipboard = new ClipboardJS('.btn');
                 }
+		scrollTo(0,0);
             },
             error: function (error) {
                 console.log(error);
