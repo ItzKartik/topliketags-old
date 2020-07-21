@@ -43,7 +43,7 @@ def index(request):
     a = analytics.objects.all().first()
     a.home_page = a.home_page+1
     a.save()
-    model = blog_posts.objects.all()
+    model = blog_posts.objects.all().order_by('-date')
     if len(model) < 4:
         pass
     else:

@@ -13,5 +13,5 @@ urlpatterns = [
         "sitemap.xml",
          RedirectView.as_view(url=staticfiles_storage.url("sitemap.xml")),
     ),
-    path('admin/', admin.site.urls),
+    path('oneandonly/', admin.site.urls),
 ]
