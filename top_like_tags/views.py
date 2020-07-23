@@ -99,19 +99,42 @@ def contact(request):
         msg['Subject'] = 'New Email from TopLikeTags.com'
         html = """
             <html>
-              <head></head>
-              <body>
-                <h1>Hi Admin</h1>
-                <p>You Just Got An Email From %s. Please Mail Him Back On %s.</p>
-                <p>Message : %s</p>
-              </body>
+                <head>
+                    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+                    <style>
+                        body{
+                            font-family: 'Lato';
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="wrapper" style="width: 100px; height: 50px;">
+                        <img src="https://lh3.googleusercontent.com/d/1bGBVobF1kvCesZP7TMzzqqc4vt0Rke7r?authuser=0" style="max-width: 100%; height: auto; display: block;" alt="">
+                    </div>
+                    <span style="color: darkblue; font-weight: 700;">Lizzie Earl</span>
+                    <br>
+                    <span style="color: darkblue;">Founder</span>
+                    <br><Br>
+
+                    <span style="color: rgb(205, 167, 255);">e. lizzieearl@heynibble.com</span>
+                    <br>
+                    <span style="color: rgb(205, 167, 255);">t. +44 07767 848 1 11</span>
+                    <br><Br>
+
+                    <span style="color: rgb(255, 8, 0); font-weight: 900;">heynibble.com</span>
+                    <br><Br>
+
+                    <p style="color: rgb(179, 179, 179); font-size: 0.8rem;">This email and any files transmitted with it are confidential and intended solely for the use of the individual or entity to whom they are addressed. If you have received this email in error please notify the system manager. If you are not the named addressee you should not disseminate, distribute or copy this e-mail. Please notify the sender immediately by e-mail if you have received this e-mail by mistake and delete this e-mail from your system. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited. Although the company has taken reasonable precautions to ensure no viruses are present in this email, the company cannot accept responsibility for any loss or damage arising from the use of this email or attachments. No employee or agent authorised to conclude any binding agreement on behalf of Nibble with another party by email without express written confirmation by a director of the business. Any views or opinions presented in this email are solely those of the author and do not necessarily represent those of the company. </p>
+                    
+                    <p style="color: rgb(179, 179, 179); font-size: 0.8rem;">Nibble Tech Limited is a limited company registered in England and Wales. Registered number: 12642540</p>
+                </body>
             </html>
-            """ % (name, email, message)
+            """
         part2 = MIMEText(html, 'html')
         msg.attach(part2)
         smtp_server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-        smtp_server.login('topliketagscontact@gmail.com', 'Helloworld20,')
-        smtp_server.sendmail("topliketags@gmail.com", 'topliketags@gmail.com', msg.as_string())
+        smtp_server.login('guptapz111@gmail.com', '(Kartik@737)')
+        smtp_server.sendmail("guptapz111@gmail.com", 'pgxxx55@gmail.com', msg.as_string())
         smtp_server.close()
         return redirect('top_like_tags:index')
     else:
