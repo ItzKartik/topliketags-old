@@ -113,7 +113,9 @@ def contact(request):
         smtp_server.login('topliketagscontact@gmail.com', 'Helloworld20,')
         smtp_server.sendmail("topliketagscontact@gmail.com", 'topliketags@gmail.com', msg.as_string())
         smtp_server.close()
-        return redirect('top_like_tags:index')
+        # return redirect('top_like_tags:index')
+        remark = 'Your message has been sent.'
+        return render(request, 'top_like_tags/contact.html', {'remark': remark})
     else:
         m = models.contact_page.objects.all().first()
         
