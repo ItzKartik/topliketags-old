@@ -110,8 +110,8 @@ def contact(request):
         part2 = MIMEText(html, 'html')
         msg.attach(part2)
         smtp_server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-        smtp_server.login('guptapz111@gmail.com', '(Kartik@737)')
-        smtp_server.sendmail("guptapz111@gmail.com", 'pgxxx55@gmail.com', msg.as_string())
+        smtp_server.login('topliketagscontact@gmail.com', 'Helloworld20,')
+        smtp_server.sendmail("topliketagscontact@gmail.com", 'topliketags@gmail.com', msg.as_string())
         smtp_server.close()
         return redirect('top_like_tags:index')
     else:
