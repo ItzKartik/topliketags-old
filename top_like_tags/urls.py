@@ -17,8 +17,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('policy/', views.policy, name='policy'),
     path('contact/', views.contact, name='contact'),
-    re_path('blog/(?P<blog_id>[\w-]+)', views.full_blog, name='full_blog'),
-    # path('generator/', views.generator.as_view(), name='generator'),
     path('generator/', views.generator, name='generator'),
 
     path('only_index/', views.only_index, name='only_index'),
@@ -28,6 +26,8 @@ urlpatterns = [
     path('only_policy/', views.only_policy, name='only_policy'),
     path('only_contact/', views.only_contact, name='only_contact'),
     re_path('only_blog/(?P<blog_id>[\w-]+)', views.only_full_blog, name='only_full_blog'),
+
+    re_path('blog/(?P<blog_id>[\w-]+)', views.full_blog, name='full_blog'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

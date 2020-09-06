@@ -215,6 +215,7 @@ def only_full_blog(request, blog_id):
     a.save()
     model = blog_posts.objects.get(blogurl=blog_id)
     return render(request, 'top_like_tags/app/only_full_blog.html', {'blog': model})
+    return render(request, 'top_like_tags/app/only_full_blog.html')
 
 
 def only_forums(request):
