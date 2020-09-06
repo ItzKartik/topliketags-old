@@ -38,9 +38,6 @@ def policy(request):
     m = models.policy_page.objects.all().first()
     return render(request, 'top_like_tags/policy.html', {'seo': m})
 
-def only_generator(request):
-    return render(request, 'top_like_tags/simple.html')
-
 def index(request):
     m = models.home.objects.all().first()
     a = analytics.objects.all().first()
@@ -170,4 +167,104 @@ def generator(request):
     if int(random_text) == 1:
         return HttpResponse(random.sample(tags, 30))
     return HttpResponse(tags[30:])
+
+# Only Templates
+
+
+def only_about(request):
+    m = models.about.objects.all().first()
+    return render(request, 'top_like_tags/app/only_about.html', {'seo': m})
+
+def only_policy(request):
+    m = models.policy_page.objects.all().first()
+    return render(request, 'top_like_tags/app/only_policy.html', {'seo': m})
+
+def only_index(request):
+    m = models.home.objects.all().first()
+    a = analytics.objects.all().first()
+    a.home_page = a.home_page+1
+    a.save()
+    model = blog_posts.objects.all().order_by('-date')
+    if len(model) < 4:
+        pass
+    else:
+        model = model[:4]
+    data = {
+        'blog': model,
+        'seo': m
+    }
+    return render(request, 'top_like_tags/app/only_index.html', data)
+
+
+def only_fixed(request):
+    m = models.fixed_hashtag.objects.all().first()
+    a = analytics.objects.all().first()
+    a.popular_hashtag = a.popular_hashtag+1
+    a.save()
+    model = fixed_hashtag.objects.all()
+    data = {
+        'fixed_hash': model,
+        'seo': m
+    }
+    return render(request, 'top_like_tags/app/only_fixed_hashtag.html', data)
+
+
+def only_full_blog(request, blog_id):
+    a = analytics.objects.all().first()
+    a.full_blog = a.full_blog+1
+    a.save()
+    model = blog_posts.objects.get(blogurl=blog_id)
+    return render(request, 'top_like_tags/app/only_full_blog.html', {'blog': model})
+
+
+def only_forums(request):
+    m = models.hashtag_tips.objects.all().first()
+
+    a = analytics.objects.all().first()
+    a.forums = a.forums+1
+    a.save()
+    model = blog_posts.objects.all().order_by('-date')
+    data = {
+        'blog': model,
+        'seo': m
+    }
+    return render(request, 'top_like_tags/app/only_forums.html', data)
+
+def only_contact(request):
+    if request.method == 'POST':
+        name = request.POST['id_name']
+        email = request.POST['id_email']
+        message = request.POST['id_msg']
+
+        msg = MIMEMultipart('alternative')
+        msg['Subject'] = 'New Email from TopLikeTags.com'
+        html = """
+            <html>
+              <head></head>
+              <body>
+                <h1>Hi Admin</h1>
+                <p>You Just Got An Email From %s. Please Mail Him Back On %s.</p>
+                <p>Message : %s</p>
+              </body>
+            </html>
+            """ % (name, email, message)
+        part2 = MIMEText(html, 'html')
+        msg.attach(part2)
+        smtp_server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+        smtp_server.login('topliketagscontact@gmail.com', 'Helloworld20,')
+        smtp_server.sendmail("topliketagscontact@gmail.com", 'topliketags@gmail.com', msg.as_string())
+        smtp_server.close()
+        # return redirect('top_like_tags:index')
+        remark = 'Your message has been sent.'
+        return render(request, 'top_like_tags/app/only_contact.html', {'remark': remark})
+    else:
+        m = models.contact_page.objects.all().first()
+        
+        a = analytics.objects.all().first()
+        a.contact = a.contact+1
+        a.save()
+        data = {
+            'seo': m
+        }
+        return render(request, 'top_like_tags/app/only_contact.html')
 

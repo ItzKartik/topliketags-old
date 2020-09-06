@@ -1,0 +1,335 @@
+{% load static %}
+<head>
+    {% if seo %}
+    <title>{{ seo.title }}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="{{ seo.description }}">
+    <meta name="keywords" content="{{ seo.keywords }}">
+    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'flaticon/font/flaticon.css' %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'animate.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open Sans|Playfair Display|Work Sans|Cormorant Garamond|Lora|Lobster|Josefin Sans|Roboto|Dancing Script|Abril Fatface|&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-52514727-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-52514727-1');
+</script>
+    <style>
+        body{
+            font-family: 'Josefin Sans';
+        }
+        @media(max-width: 1100px){
+
+        }
+        @media(max-width: 650px){
+            .ftxt{
+                display: none !important;
+            }
+            .ftxt_show{
+                display: block !important;
+            }
+            .wp{
+                 height: 200px !important;
+            }
+            .navbar-img{
+                text-align: center !important;
+                width: 70% !important;
+            }
+            .navbar-toggler{
+                position: absolute;
+            }
+            .navbar-collapse{
+                text-align: right;
+            }
+            .navbar{
+                height: auto !important;
+            }
+            .main_tab{
+                margin: 10px 0px 0px 0px !important;
+            }
+            .main_part, .overlay{
+                height: 500px;
+            }
+        }
+        a{
+            text-decoration: none;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        .nav_id{
+            font-weight: 700;
+            font-size: 1rem;
+            {#color: #4b4b4b;#}
+            color: white;
+        }
+        .nav_id:hover{
+            text-decoration: none !important;
+            transition: ease 0.5s;
+            color: #00e1ff !important;
+        }
+        @media(max-width: 770px){
+            .ftxt{
+                display: none !important;
+            }
+            .ftxt_show{
+                display: block !important;
+            }
+            .wp{
+                 height: 200px !important;
+            }
+            .navbar-img{
+                text-align: center !important;
+                width: 70% !important;
+            }
+            .navbar-toggler{
+                position: absolute;
+            }
+            .navbar-collapse{
+                text-align: right;
+            }
+            .navbar{
+                height: auto !important;
+            }
+            .main_tab{
+                margin: 10px 0px 0px 0px !important;
+            }
+            .main_part{
+                height: 450px !important;
+            }
+            .overlay{
+                height: 450px !important;
+            }
+        }
+        div.main_part{
+            z-index: 2;
+            width: 100%;
+            height: 600px;
+            position: absolute;
+            box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+            background: url("{% static 'bg.jpg' %}");
+            background-position: center;
+            background-size: cover;
+            opacity: 0.8;
+            background-repeat: no-repeat;
+        }
+        .navbar-img:hover{
+            cursor: pointer;
+        }
+         div.overlay{
+            z-index: 3;
+            width: 100%;
+            height: 600px;
+            position: absolute;
+            box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+            border-radius: 5px;
+            {#background-color: rgba(255, 255, 255, 0.15);#}
+            background-color: rgba(0, 0, 0, 0.57);
+            backdrop-filter: blur(3px);
+            color: #fff;
+        }
+        .nv{
+            background: rgba(0, 0, 0, 0.23);
+            {#background: rgba(255, 255, 255, 0.62);#}
+            z-index: 4;
+            color: white;
+        }
+        .nav-link{
+            color: white !important;
+                font-weight: 900 !important;
+        }
+        .nav-link:hover{
+            transition: ease 0.5s;
+            color: #000000 !important;
+        }
+        .navbar-toggler {
+            border: none !important;
+        }
+        .btn:link,
+        .btn:visited {
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 15px 40px;
+            display: inline-block;
+            border-radius: 100px;
+            transition: all .2s;
+            position: absolute;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-white {
+            background-color: #fff;
+            color: #777;
+        }
+
+        .btn::after {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            border-radius: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: all .4s;
+        }
+
+        .btn-white::after {
+            background-color: #fff;
+        }
+
+        .btn:hover::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+
+        .btn-animated {
+            animation: moveInBottom 5s ease-out;
+            animation-fill-mode: backwards;
+        }
+
+        @keyframes moveInBottom {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+<style>
+.main_part, .overlay{
+    display: none !important;
+}
+</style>
+<body>
+    
+    <Br><Br><br>
+    <div class="container mx-auto text-center">
+        <div class="row">
+            <div class="col-md-6" data-aos-offset="300" data-aos-duration="1000" data-aos-delay="50">
+                <div class="mx-auto text-center"  style="padding: 50px; width: 300px;">
+                    <img alt="topliketags logo" src="{% static 'logo1.png' %}" style="max-width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+            <div class="col-md-6" data-aos-offset="300" data-aos-duration="1000" data-aos-delay="50">
+                <div class=" mr-auto text-left">
+                    <p style="color:grey;">Hello There! Hola! Nei Hou! TopLikeTags was founded in July 2014 by <a href="https://instagram.com/heycinc">@Heycinc</a>. It was started with a simple website displaying top fixed hashtags that were manually analysed
+                        and handpicked by me. I am a regular social media user myself, noticing that reaching to wider audience
+                        becomes rather harder than before.</p>
+                    <p style="color:grey;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;So to save everyone’s time, we have upgraded it to an automatic
+                        hashtag generator for yall
+                        You can simply insert a keyword and the relevant hashtags will be
+                        generated in a click. Have fun finding the hashtags to push your content!</p>
+                    <p style="color:grey;">Hope it helps Wanna collab with me or just be grambuddy? Feel free to pop me a message on
+                        <a href="https://instagram.com/heycinc">@Heycinc</a> or <a href="mailto:hello@topliketags.com">email</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="mx-auto col-md-12 text-center">
+        <div class="col-md-6 mx-auto text-center">
+            <br>
+            <h3 style="font-weight: 900;">Our Hashtag Tools</h3>
+            <hr class="col-md-1" style="background: #f9333f;"><br><Br>
+        </div>
+        <div class="row">
+            <div class="col-md-4" style="padding: 50px;">
+                <div onclick="window.location.replace('{% url 'top_like_tags:index' %}');" class="tools_con text-center" style="box-shadow: 0px 0px 10px 0px #9c9c9c; padding: 50px; border: 2px solid grey; border-radius: 20px;">
+                    <div class="insta-img mx-auto text-center" style="width: 50px; margin: 0px 0px 0px 0px">
+                        <img alt="topliketags icon1" style="max-width: 100%; height: auto; display: block;" src="{% static 'hydro-power.png' %}">
+                    </div><br>Automatic Hashtags Generator</p>
+                </div>
+            </div>
+            <div class="col-md-4" style="padding: 50px;">
+                <div onclick="window.location.replace('{% url 'top_like_tags:fixed_hashtag' %}');" class="tools_con text-center" style="box-shadow: 0px 0px 10px 0px #9c9c9c; padding: 50px; border: 2px solid grey; border-radius: 20px;">
+                    <div class="insta-img mx-auto text-center" style="width: 50px; margin: 0px 0px 0px 0px">
+                        <img alt="topliketags icon2" style="max-width: 100%; height: auto; display: block;" src="{% static 'hashtag.png' %}">
+                    </div><br>
+                    <p style="font-size: 20px">Top Handpicked Hashtags</p>
+                </div>
+            </div>
+            <div class="col-md-4" style="padding: 50px;">
+                <div onclick="window.location.replace('{% url 'top_like_tags:forums' %}');" class="tools_con text-center" style="box-shadow: 0px 0px 10px 0px #9c9c9c; padding: 50px; border: 2px solid grey; border-radius: 20px;">
+                    <div class="insta-img mx-auto text-center" style="width: 50px; margin: 0px 0px 0px 0px">
+                        <img alt="topliketags icon3" style="max-width: 100%; height: auto; display: block;" src="{% static 'question.png' %}">
+                    </div><br>
+                    <p style="font-size: 20px">Hashtags Tips</p>
+                </div>
+            </div>
+        </div>
+    </div><br><Br><Br>
+            <style>
+                .tools_con:hover{
+                    transition: ease ease-out 0.4s;
+                    {#color: white;#}
+                    cursor: pointer;
+                    box-shadow: none !important;
+                    {#background: #00e1ff;#}
+                }
+            </style>
+    
+<div class="col-md-12">
+                <div class="container" style="padding: 10px;">
+                    <hr>
+                    <div class="row">
+                        <div class="mr-auto text-left">
+                            <p style="font-size: 0.8rem;">Copyright © 2020 TopLikeTags
+                                <a class="ftxt" href="{% url 'top_like_tags:only_about' %}">| About |</a>
+                                <a class="ftxt" href="{% url 'top_like_tags:only_policy' %}">Privacy |</a>
+                                <a class="ftxt" href="{% url 'top_like_tags:only_contact' %}">Contact</a>
+                        </div><br>
+                        <div class="ftxt_show mr-auto text-center" style="font-size: 0.8rem; display: none">
+                            <a href="{% url 'top_like_tags:only_about' %}">About</a>
+                            <a href="{% url 'top_like_tags:only_policy' %}">Privacy</a>
+                            <a href="{% url 'top_like_tags:only_contact' %}">Contact</a>
+                        </div><Br><Br>
+                        <div class="mx-auto text-center">
+                            <p style="font-size: 0.8rem;">Need Help? Email hello@topliketags.com</p>
+                        </div>
+                        <div class="ml-auto text-right">
+                            <a href="https://www.instagram.com/topliketags">
+                                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com/topliketags">
+                                <i style="margin: 0px 4px 0px 4px; font-size: 1.5rem;" class="fab fa-facebook"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+            <script>
+                AOS.init();
+            </script>
+</body>
+</html>
