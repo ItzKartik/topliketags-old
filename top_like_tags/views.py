@@ -38,6 +38,9 @@ def policy(request):
     m = models.policy_page.objects.all().first()
     return render(request, 'top_like_tags/policy.html', {'seo': m})
 
+def only_generator(request):
+    return render(request, 'top_like_tags/simple.html')
+
 def index(request):
     m = models.home.objects.all().first()
     a = analytics.objects.all().first()

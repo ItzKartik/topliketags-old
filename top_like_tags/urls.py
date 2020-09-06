@@ -12,6 +12,7 @@ app_name = 'top_like_tags'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('only_generator', views.only_generator, name='only_generator'),
     path('popular_hashtags/', views.fixed, name='fixed_hashtag'),
     path('hashtag_tips/', views.forums, name='forums'),
     path('about/', views.about, name='about'),
