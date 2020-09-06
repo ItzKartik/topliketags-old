@@ -374,7 +374,7 @@ border: 0.5px solid rgba(128,128,128,0.25); border-left: none; border-right: non
                           {% endif %}
                           <div class="card-body text-center">
                             <h5 class="card-title">{{ b.title|truncatechars:60 }}</h5>
-                            <p class="card-text">{{ b.text|truncatechars:50 }}</p>
+                            <p class="card-text">{{ b.text|truncatechars:50|safe }}</p>
                             <a href="{% url 'top_like_tags:full_blog' blog_id=b.blogurl %}"><button class="btn btn-primary">Read More</button></a>
                           </div>
                         </div>
